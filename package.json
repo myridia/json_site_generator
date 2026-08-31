@@ -1,0 +1,28 @@
+{
+  "name": "json_site_generator",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "index": "node scripts/index-docs.mjs",
+    "predev": "npm run index",
+    "prebuild": "npm run index",
+    "prestart": "npm run index",
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "dependencies": {
+    "nuxt": "^3.17.0",
+    "vue": "^3.5.0",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@vite-pwa/nuxt": "^0.10.0",
+    "vite-plugin-pwa": "^1.0.0"
+  }
+}

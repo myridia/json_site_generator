@@ -1,0 +1,10 @@
+{
+  "_id": "thread:2026_08_29_10_22bb33cc",
+  "type": "thread",
+  "template_version": 1,
+  "title": "Tailwind theme tweaks",
+  "content": "The generated site shell uses a custom shell/ink palette mapped in tailwind.config.ts. The accent color is #00d4aa and the couch palette follows the tibellus Fauxton teal (#12808c).",
+  "created_at": "2026-08-29T10:05:00Z",
+  "tags": ["tailwind", "ui", "theme"],
+  "replies": []
+}

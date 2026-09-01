@@ -3,10 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "index": "node scripts/index-docs.mjs",
-    "predev": "npm run index",
-    "prebuild": "npm run index",
-    "prestart": "npm run index",
     "dev": "nuxt dev",
     "build": "nuxt build",
     "generate": "nuxt generate",

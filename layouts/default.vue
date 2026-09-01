@@ -2,7 +2,7 @@
   <div class="min-h-screen flex flex-col">
     <header class="mx-auto w-full max-w-[960px] px-[20px]">
       <div class="my-[18px]">
-        <NuxtLink :to="`/s/${currentSite?.name || ''}`" class="flex items-center gap-2 font-body no-underline">
+        <NuxtLink :to="currentSite ? `/s/${currentSite.name}` : '/'" class="flex items-center gap-2 font-body no-underline">
           <img v-if="currentSite?.config.logo" :src="currentSite.config.logo" alt="Logo" class="h-6 w-auto" />
           <span class="font-heading text-[1.6em] italic tracking-wide text-[#8a8a8a]">
             {{ currentSite?.config.title || "Home" }}
@@ -58,7 +58,7 @@
 </template>
 
 <script setup>
-import { getSite } from "~/utils/sites";
+import { getSite, getDefaultSite } from "~/utils/sites";
 
 const route = useRoute();
 const router = useRouter();
@@ -66,7 +66,8 @@ const headerQuery = ref("");
 
 const currentSite = computed(() => {
   const name = route.params.site;
-  return typeof name === "string" && name ? getSite(name) : null;
+  if (typeof name === "string" && name) return getSite(name);
+  return getDefaultSite();
 });
 
 function onHeaderSearch() {

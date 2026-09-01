@@ -29,8 +29,18 @@ until [ "$task" = "0" ]; do
     npm install
 
   elif [ "$task" = "3" ]; then
-    printf "...npm run dev\n"
-    npm run dev
+    printf "...Starting live dev mode (HMR + Vue Devtools)\n"
+
+    printf "  Open these in your browser:\n"
+    printf "    http://localhost:3000/                                    # all sites\n"
+    printf "    http://localhost:3000/s/myridia                          # landing (hero + recent)\n"
+    printf "    http://localhost:3000/s/myridia/docs/post/<slug>         # a post\n"
+    printf "    http://localhost:3000/s/myridia/docs/thread/<slug>       # a thread\n"
+    printf "    http://localhost:3000/search                             # search\n"
+    printf "  Tip: edit any .vue file or doc JSON and it hot-reloads live.\n"
+    printf "  Vue Devtools widget sits in the bottom corner (http://localhost:3000/_nuxt).\n\n"
+    sudo chown veto:veto . -Rf
+    npm run dev myridia
 
   elif [ "$task" = "4" ]; then
     printf "...npm run build\n"

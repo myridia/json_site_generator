@@ -36,15 +36,16 @@
 </template>
 
 <script setup>
-import { getSite } from "~/utils/sites";
+const props = defineProps({
+  site: { type: Object, required: true },
+});
 
-const route = useRoute();
-const site = getSite(route.params.site);
+const site = computed(() => props.site);
 
-const home = computed(() => site.config.home || { hero: [], columns: [] });
+const home = computed(() => site.value.config.home || { hero: [], columns: [] });
 
 const recentPosts = computed(() =>
-  site.docs
+  site.value.docs
     .filter((d) => d.type === "post")
     .sort((a, b) => (b.doc.created_at || "").localeCompare(a.doc.created_at || ""))
     .slice(0, 5)

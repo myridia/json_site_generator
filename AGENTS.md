@@ -61,7 +61,7 @@ Add docs as JSON in `content/sites/<site>/docs/<type>/<slug>.json`, then rebuild
 - `layouts/default.vue` — shared site shell (header nav, footer); resolves the
   current site from the route (`/s/<site>/...` -> `content/sites/<site>/site.json`)
 - `pages/index.vue` — lists all sites + their docs
-- `pages/s/[site].vue` — one site's landing (hero/manifesto from `site.json home`
+- `pages/s/[site]/index.vue` — one site's landing (hero/manifesto from `site.json home`
   + "Recent from the Notebook" posts)
 - `pages/s/[site]/docs/[type]/[slug].vue` — per-doc page
 - `pages/search.vue` — client-side full-text search results (`?q=`)

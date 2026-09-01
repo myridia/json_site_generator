@@ -56,6 +56,12 @@ export function getSite(name: string) {
   return sites.find((s) => s.name === name) || null;
 }
 
+export const defaultSiteName = "myridia";
+
+export function getDefaultSite() {
+  return getSite(defaultSiteName);
+}
+
 export function getSiteDoc(site: string, type: string, slug: string) {
   return getSite(site)?.docs.find((d) => d.type === type && d.slug === slug)?.doc || null;
 }

@@ -120,7 +120,7 @@ Fetched docs are written into `content/sites/<site>/docs/`, then build as normal
 ├── pages
 │   ├── index.vue              # all-sites listing
 │   └── s
-│       ├── [site].vue         # one site's landing
+│       ├── [site]/index.vue   # one site's landing
 │       └── [site]/docs/[type]/[slug].vue   # per-doc page
 ├── public                     # static assets (imgs, PWA icons)
 ├── scripts/fetch-couchdb.mjs  # pull docs from CouchDB into a site

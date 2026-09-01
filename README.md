@@ -97,21 +97,36 @@ Fetched docs are written into `content/sites/<site>/docs/`, then build as normal
 
 ## Structure
 ```
-content/sites/<site>/site.json     # that site's shell config (title, nav, footer)
-content/sites/<site>/docs/<type>/<slug>.json   # that site's JSON docs
-utils/sites.ts                     # import.meta.glob loader (sites, getSite, getSiteDoc)
-utils/renderers.ts                 # per-site renderer registry (resolveRenderer)
-components/DocRenderer.vue         # per-site type -> renderer dispatcher
-components/Thread.vue              # thread renderer (tibellus thread schema)
-components/FallbackDoc.vue         # generic fallback for unknown types
-layouts/default.vue                # shared shell (header/nav/footer), site-driven
-pages/index.vue                    # all-sites listing
-pages/s/[site].vue                 # one site's landing
-pages/s/[site]/docs/[type]/[slug].vue      # per-doc page
-scripts/fetch-couchdb.mjs          # pull docs from CouchDB into a site
-assets/css/main.css                # Tailwind entry
-tailwind.config.ts                 # Tailwind theme
-nuxt.config.ts                     # PWA + prerender routes (all sites)
+.
+├── AGENTS.md
+├── LICENSE
+├── README.md
+├── app.vue                    # root app (NuxtLayout + NuxtPage)
+├── assets/css/main.css        # Tailwind entry
+├── components
+│   ├── DocRenderer.vue        # per-site type -> renderer dispatcher
+│   ├── FallbackDoc.vue        # generic fallback for unknown types
+│   ├── Thread.vue             # thread renderer (tibellus thread schema)
+│   └── ThreadReply.vue        # thread reply renderer
+├── content/sites
+│   └── myridia
+│       ├── site.json          # that site's shell config (title, nav, footer)
+│       └── docs/<type>/<slug>.json   # that site's JSON docs
+├── json_site_generator.svg
+├── layouts/default.vue        # shared shell (header/nav/footer), site-driven
+├── nuxt.config.ts             # PWA + prerender routes (all sites)
+├── package.json
+├── package-lock.json
+├── pages
+│   ├── index.vue              # all-sites listing
+│   └── s
+│       ├── [site].vue         # one site's landing
+│       └── [site]/docs/[type]/[slug].vue   # per-doc page
+├── public                     # static assets (imgs, PWA icons)
+├── scripts/fetch-couchdb.mjs  # pull docs from CouchDB into a site
+└── utils
+    ├── renderers.ts           # per-site renderer registry (resolveRenderer)
+    └── sites.ts               # import.meta.glob loader (sites, getSite, getSiteDoc)
 ```
 
 ## Stack

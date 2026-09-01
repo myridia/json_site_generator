@@ -38,6 +38,51 @@ Rendered at `/s/myridia/docs/<type>/<slug>`.
 
 Rendered at `/s/<site>` and `/s/<site>/docs/<type>/<slug>`.
 
+## Where does what go?
+
+Your two inputs map to:
+
+- **Your JSON docs** → one folder per site under `content/sites/`:
+  ```
+  content/sites/myridia/
+    site.json                # this site's shell/theme config
+    docs/<type>/<slug>.json  # e.g. docs/thread/example-thread.json
+  ```
+
+- **Theme / layout** → two layers:
+  1. **The shell look** (title, colors, nav, footer, slogan, logo) is **data** —
+     set in that site's `site.json`:
+     ```jsonc
+     {
+       "title": "Myridia",
+       "tagline": "...",
+       "slogan": "...",
+       "logo": "/imgs/logo.png",
+       "nav": [ { "label": "Home", "url": "/s/myridia" } ],
+       "footer": "..."
+     }
+     ```
+  2. **The component logic / per-type layout** → Vue components in `components/`,
+     and each doc `type` is mapped to its renderer in `utils/renderers.ts`:
+
+     ```ts
+     // utils/renderers.ts
+     const registries: Record<string, Registry> = {
+       myridia: { thread: Thread },          // myridia renders `thread` docs with Thread.vue
+       // "next-project": { blog: BlogPost }, // add your next site here
+     };
+     ```
+     - Outer key (`myridia`) = a site in `content/sites/`
+     - Inner key (`thread`) = a doc `type` in that site's `docs/<type>/`
+     - Value (`Thread`) = the Vue component that renders that type
+
+**To add a new themed project later (this is the whole point):**
+1. `mkdir content/sites/<name>/docs/<type>`
+2. drop your JSON files in there
+3. write its `<name>/site.json`
+4. add one entry in `utils/renderers.ts` mapping your doc types → renderer components
+5. rebuild — no engine code changes needed
+
 ### Pull docs from CouchDB (optional)
 ```bash
 node scripts/fetch-couchdb.mjs -u <user> -p <pass> [-s <site>]   # pulls userdb-<hex> into that site (default myridia)

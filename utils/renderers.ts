@@ -1,4 +1,4 @@
-import { markRaw, type Component } from "vue";
+import type { Component } from "vue";
 import Thread from "~/components/Thread.vue";
 import FallbackDoc from "~/components/FallbackDoc.vue";
 
@@ -11,13 +11,10 @@ const registries: Record<string, Registry> = {
 };
 
 export function resolveRenderer(site: string, type: string): Component {
-  const fallback: Registry = { _fallback: FallbackDoc };
-  const reg = registries[site] || fallback;
+  const reg = registries[site] || {};
   return reg[type] || FallbackDoc;
 }
 
 export function registerSiteRenderers(site: string, registry: Registry) {
   registries[site] = registry;
 }
-
-export { markRaw };

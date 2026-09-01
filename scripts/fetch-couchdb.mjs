@@ -2,7 +2,6 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 
 const COUCHDB_URL = process.env.COUCHDB_URL || "http://127.0.0.1:5984";
-const OUT = new URL("../content/docs/", import.meta.url);
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -15,6 +14,7 @@ function parseArgs() {
     user: read("-u"),
     pass: read("-p"),
     type: read("-t") || "doc",
+    site: read("-s") || "myridia",
   };
 }
 
@@ -45,6 +45,7 @@ async function main() {
   }
 
   const body = await resp.json();
+  const OUT = new URL(`../content/sites/${opts.site}/docs/`, import.meta.url);
   let n = 0;
   for (const row of body.rows || []) {
     const doc = row.doc;
@@ -56,7 +57,7 @@ async function main() {
     writeFileSync(file, JSON.stringify(doc, null, 2) + "\n", "utf8");
     n++;
   }
-  console.log(`Pulled ${n} doc(s) from ${db} -> content/docs/`);
+  console.log(`Pulled ${n} doc(s) from ${db} -> content/sites/${opts.site}/docs/`);
 }
 
 main();

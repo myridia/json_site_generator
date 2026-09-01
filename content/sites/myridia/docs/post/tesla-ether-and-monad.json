@@ -1,0 +1,40 @@
+{
+  "_id": "post:2026_08_24_tesla_ether_monad",
+  "_rev": "1-00000000000000000000000000000000",
+  "type": "post",
+  "template_version": 1,
+  "title": "Tesla's mental electricity model",
+  "created_at": "2026-08-24T10:00:00Z",
+  "tags": ["tesla", "ether", "monad", "physics"],
+  "summary": "Seven theses on Tesla's ether model, and how the old ether-vs-monad dispute was resolved by quantum field theory.",
+  "body": [
+    {
+      "heading": "One universal medium",
+      "paragraphs": [
+        "One universal medium (ether) fills all space. Everything — matter, energy, forces — are states or motions of this single substance.",
+        "Electricity behaves like an incompressible fluid. It is a continuous quantity that cannot be created or destroyed, only moved. Charge is tension in the medium; current is the equalization flow of those strains; magnetism is the circular motion of the medium around conductors."
+      ]
+    },
+    {
+      "heading": "Matter as whirls",
+      "paragraphs": [
+        "Matter itself is just whirls and vortices of the medium. Hence Tesla's famous claim: there is no energy in matter other than that received from the environment — atoms are machines driven by the surrounding ether, which is why he rejected E=mc²."
+      ]
+    },
+    {
+      "heading": "Energy in the space around wires",
+      "paragraphs": [
+        "Energy travels in the space around wires, not inside them. The conductor just guides; the real transfer happens through the dielectric via displacement currents. He pushed this to the extreme with high voltage and high frequency.",
+        "His waves were pressure pulses, not Hertz's transverse waves — sound-like longitudinal disturbances in the medium, propagating through Earth and air. The Earth is a resonant conductor; pump it at the right frequency and it rings like a bell, letting power be drawn anywhere — the premise of Wardenclyffe.",
+        "No electrons. Cathode rays weren't particle streams; radioactivity didn't mean atoms store nuclear energy; his cosmic rays outran light."
+      ]
+    },
+    {
+      "heading": "The monad connection",
+      "paragraphs": [
+        "His model is essentially monist metaphysics operationalized. Everything is whirls and strains of one medium; matter, electricity, light, and gravity are just different motions of the same substance. He inherited it from Faraday–Maxwell continuum physics plus the era's monist philosophy.",
+        "The modern irony: quantum field theory looks like a final marriage — continuous fields everywhere (ether-like, minus the mechanical medium) whose quanta are discrete units (monad-like). The three-hundred-year-old dispute got synthesized rather than won."
+      ]
+    }
+  ]
+}

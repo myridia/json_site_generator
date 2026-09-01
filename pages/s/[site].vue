@@ -1,25 +1,37 @@
 <template>
   <section>
-    <h1 class="text-[1.4em] font-bold italic">{{ site.config.tagline || "Documents" }}</h1>
+    <ul v-if="home.hero && home.hero.length" class="m-0 mb-6 flex list-none flex-wrap gap-3 p-0">
+      <li v-for="(tile, i) in home.hero" :key="tile.label || i" class="border-2 border-dotted border-[#a8a8a8] bg-white px-4 py-2">
+        <NuxtLink :to="tile.url" class="font-heading text-[1.3em] italic no-underline text-myridia-green hover:text-myridia-ink">
+          {{ tile.label }}
+        </NuxtLink>
+      </li>
+    </ul>
 
-    <div v-if="site.docs.length" class="mt-4">
-      <section v-for="type in groupTypes" :key="type.name" class="mb-5">
-        <h2 class="mb-2 border-b-2 border-dotted border-[#a8a8a8] pb-1 text-[1.6em] font-bold">
-          {{ type.name }}
-        </h2>
-        <ul class="list-none pl-4 font-heading text-[1.3em] italic leading-relaxed">
-          <li v-for="doc in type.items" :key="doc.slug">
-            <NuxtLink :to="`/s/${site.name}/docs/${doc.type}/${doc.slug}`" class="text-myridia-green no-underline hover:text-myridia-ink">
-              {{ doc.title }}
-            </NuxtLink>
-          </li>
-        </ul>
-      </section>
+    <div v-if="home.columns && home.columns.length" class="flex flex-wrap items-start gap-8">
+      <div v-for="(col, i) in home.columns" :key="i" :class="home.columns.length > 1 ? 'flex-1' : 'w-full'">
+        <h3 v-if="col.heading" class="mb-2 text-[1.5em] font-bold">{{ col.heading }}</h3>
+        <p v-for="(para, j) in col.paragraphs" :key="j" class="mb-4 leading-6">{{ para }}</p>
+      </div>
     </div>
 
-    <p v-else class="mt-4 rounded border bg-white p-4">
-      No documents yet. Add JSON files to <code>content/sites/{{ site.name }}/docs/</code> and rebuild.
-    </p>
+    <section v-if="recentPosts.length" class="mt-8">
+      <h2 class="mb-3 border-b-2 border-dotted border-[#a8a8a8] pb-1 text-[1.6em] font-bold">
+        Recent from the Notebook
+      </h2>
+      <ul class="list-none">
+        <li v-for="post in recentPosts" :key="post.slug" class="mb-4">
+          <NuxtLink
+            :to="`/s/${site.name}/docs/post/${post.slug}`"
+            class="font-heading text-[1.3em] italic no-underline text-myridia-green hover:text-myridia-ink"
+          >
+            {{ post.title }}
+          </NuxtLink>
+          <p v-if="post.doc.summary" class="mt-1 text-[0.95em] text-myridia-muted">{{ post.doc.summary }}</p>
+          <p class="mt-0.5 text-[0.8em] text-[#777]">{{ formatDate(post.doc.created_at) }}</p>
+        </li>
+      </ul>
+    </section>
   </section>
 </template>
 
@@ -29,12 +41,17 @@ import { getSite } from "~/utils/sites";
 const route = useRoute();
 const site = getSite(route.params.site);
 
-const groupTypes = computed(() => {
-  const groups = new Map();
-  for (const doc of site.docs) {
-    if (!groups.has(doc.type)) groups.set(doc.type, { name: doc.type, items: [] });
-    groups.get(doc.type).items.push(doc);
-  }
-  return [...groups.values()];
-});
+const home = computed(() => site.config.home || { hero: [], columns: [] });
+
+const recentPosts = computed(() =>
+  site.docs
+    .filter((d) => d.type === "post")
+    .sort((a, b) => (b.doc.created_at || "").localeCompare(a.doc.created_at || ""))
+    .slice(0, 5)
+);
+
+function formatDate(value) {
+  if (!value) return "";
+  return new Date(value).toLocaleDateString();
+}
 </script>

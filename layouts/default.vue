@@ -14,6 +14,18 @@
         >
           {{ currentSite.config.slogan }}
         </p>
+        <form @submit.prevent="onHeaderSearch" class="mt-3 flex max-w-xs items-center gap-1">
+          <input
+            v-model="headerQuery"
+            type="text"
+            name="q"
+            placeholder="Search"
+            class="w-full border-2 border-dotted border-[#a8a8a8] bg-white px-2 py-0.5 text-[0.9em]"
+          />
+          <button type="submit" class="border-2 border-dotted border-[#a8a8a8] bg-white px-2 py-0.5 text-[0.9em]">
+            Go
+          </button>
+        </form>
       </div>
     </header>
 
@@ -49,8 +61,16 @@
 import { getSite } from "~/utils/sites";
 
 const route = useRoute();
+const router = useRouter();
+const headerQuery = ref("");
+
 const currentSite = computed(() => {
   const name = route.params.site;
   return typeof name === "string" && name ? getSite(name) : null;
 });
+
+function onHeaderSearch() {
+  const q = headerQuery.value.trim();
+  router.push({ path: "/search", query: q ? { q } : {} });
+}
 </script>

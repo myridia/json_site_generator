@@ -11,6 +11,11 @@ function parseTypeSlug(path: string): { site: string; type: string; slug: string
   return m ? { site: m[1], type: m[2], slug: m[3] } : null;
 }
 
+type SiteHome = {
+  hero?: { label: string; url: string }[];
+  columns?: { heading?: string; paragraphs: string[] }[];
+};
+
 type SiteConfig = {
   title: string;
   tagline?: string;
@@ -18,6 +23,7 @@ type SiteConfig = {
   logo?: string;
   nav: { label: string; url: string }[];
   footer: string;
+  home?: SiteHome;
 };
 
 type SiteDoc = {

@@ -3,17 +3,14 @@
 </template>
 
 <script setup>
-import { computed, resolveComponent } from "vue";
-import Thread from "~/components/Thread.vue";
+import { computed } from "vue";
+import { resolveRenderer } from "~/utils/renderers";
 
 const props = defineProps({
+  site: { type: String, required: true },
   type: { type: String, required: true },
   doc: { type: Object, required: true },
 });
 
-const registry = {
-  thread: Thread,
-};
-
-const renderer = computed(() => registry[props.type] || resolveComponent("FallbackDoc"));
+const renderer = computed(() => resolveRenderer(props.site, props.type));
 </script>

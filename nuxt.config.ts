@@ -17,7 +17,7 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: ["/", ...buildDocRoutes()],
+      routes: ["/", ...buildSiteRoutes()],
     },
   },
 
@@ -49,17 +49,24 @@ export default defineNuxtConfig({
   },
 });
 
-function buildDocRoutes() {
-  const src = fileURLToPath(new URL("./content/docs/", import.meta.url));
+function buildSiteRoutes() {
+  const src = fileURLToPath(new URL("./content/sites/", import.meta.url));
   if (!existsSync(src)) return [];
   const routes = [];
-  for (const type of readdirSync(src)) {
-    const typeDir = join(src, type);
-    if (!statSync(typeDir).isDirectory()) continue;
-    for (const file of readdirSync(typeDir)) {
-      if (!file.endsWith(".json")) continue;
-      const slug = file.replace(/\.json$/, "");
-      routes.push(`/docs/${type}/${slug}`);
+  for (const site of readdirSync(src)) {
+    const siteDir = join(src, site);
+    if (!statSync(siteDir).isDirectory()) continue;
+    routes.push(`/s/${site}`);
+    const docsDir = join(siteDir, "docs");
+    if (!existsSync(docsDir)) continue;
+    for (const type of readdirSync(docsDir)) {
+      const typeDir = join(docsDir, type);
+      if (!statSync(typeDir).isDirectory()) continue;
+      for (const file of readdirSync(typeDir)) {
+        if (!file.endsWith(".json")) continue;
+        const slug = file.replace(/\.json$/, "");
+        routes.push(`/s/${site}/docs/${type}/${slug}`);
+      }
     }
   }
   return routes;

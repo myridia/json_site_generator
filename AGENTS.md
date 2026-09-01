@@ -13,8 +13,9 @@ HTML file per doc) while remaining Vue + PWA enabled.
 Each site is a self-contained folder:
 `content/sites/<site>/` containing:
 - `site.json` — that site's shell config (title, tagline, slogan, logo, nav, footer)
-  plus an optional `home` block (hero tiles `{label,url}[]` and manifesto
-  `columns` `{heading?, paragraphs[]}[]`) rendered on that site's landing page.
+  plus an optional `home` block (hero tiles `{label,url}[]`, a `repos` grid
+  `{name,url,logo}[]` for listing public repositories with their logos, and a
+  manifesto `columns` `{heading?, paragraphs[]}[]`) rendered on that site's landing page.
 - `docs/<type>/<slug>.json` — that site's documents (each `type` gets a renderer)
 - Renderers for that site's doc types are registered in `utils/renderers.ts`
   (keyed by site name; see below)

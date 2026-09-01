@@ -8,6 +8,22 @@
       </li>
     </ul>
 
+    <section v-if="home.repos && home.repos.length" class="mt-8">
+      <h2 class="mb-3 border-b-2 border-dotted border-[#a8a8a8] pb-1 text-[1.6em] font-bold">
+        Projects
+      </h2>
+      <ul class="grid list-none grid-cols-2 gap-3 p-0 md:grid-cols-3">
+        <li v-for="repo in home.repos" :key="repo.name" class="border-2 border-dotted border-[#a8a8a8] bg-white p-3">
+          <NuxtLink :to="repo.url" class="flex items-center gap-2 no-underline">
+            <img v-if="repo.logo" :src="repo.logo" :alt="repo.name" class="h-8 w-auto" />
+            <span class="font-heading text-[1.1em] italic text-myridia-green hover:text-myridia-ink">
+              {{ repo.name }}
+            </span>
+          </NuxtLink>
+        </li>
+      </ul>
+    </section>
+
     <div v-if="home.columns && home.columns.length" class="flex flex-wrap items-start gap-8">
       <div v-for="(col, i) in home.columns" :key="i" :class="home.columns.length > 1 ? 'flex-1' : 'w-full'">
         <h3 v-if="col.heading" class="mb-2 text-[1.5em] font-bold">{{ col.heading }}</h3>

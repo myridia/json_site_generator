@@ -14,6 +14,7 @@ function parseTypeSlug(path: string): { site: string; type: string; slug: string
 type SiteHome = {
   hero?: { label: string; url: string }[];
   columns?: { heading?: string; paragraphs: string[] }[];
+  repos?: { name: string; url: string; logo?: string }[];
 };
 
 type SiteConfig = {

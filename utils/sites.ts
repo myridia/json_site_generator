@@ -57,12 +57,6 @@ export function getSite(name: string) {
   return sites.find((s) => s.name === name) || null;
 }
 
-export const defaultSiteName = "myridia";
-
-export function getDefaultSite() {
-  return getSite(defaultSiteName);
-}
-
 export function useActiveSite() {
   const route = useRoute();
   const config = useRuntimeConfig();

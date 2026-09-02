@@ -1,5 +1,6 @@
-# Project: json_site_generator
+# AGENTS.md — json_site_generator
 
+<<<<<<< HEAD
 ## Overview
 Static site generator (SSG) that renders one static page per JSON document.
 Built on Nuxt so the output is fully static (crawler-friendly, one stored HTML
@@ -109,3 +110,24 @@ npm run generate <name> # builds a specific site (2+ folders present)
 - Do not commit secrets (CouchDB creds via env, never hardcoded).
 - Keep at most one site folder active when you want no-arg commands; with
   several folders you must pass the site name.
+=======
+## What this is
+A tool that generates static websites from JSON files.
+
+## Stack
+- JSON data files
+- Static site generation
+
+## Build
+No build / programming language identified yet — minimal project.
+
+## Run
+See project files for current implementation.
+
+## Structure
+- `README.md` — project description
+- `LICENSE` — license
+
+## Conventions
+- No comments in code unless asked.
+>>>>>>> acb516643c4451dfa2208131d9cf0f1830b68442

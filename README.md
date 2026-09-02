@@ -39,6 +39,35 @@ grid `{name,url,logo}[]`, and manifesto `columns` `{heading?, paragraphs[]}[]`).
 
 Rendered at `/docs/<type>/<slug>`.
 
+## Render another site
+This is a **single-site** generator — it renders the one site defined in
+`content/`. To point it at a different site you change data + content only (no
+engine code), unless the new site uses new doc types:
+
+**Always change**
+- `content/site.json` — new shell: `title`, `tagline`, `slogan`, `logo`, `nav[]`,
+  `footer`, `home` (hero/repos/columns). The `logo` is served from `public/imgs/`
+  (drop the file in, reference it here).
+- `content/docs/` — replace with the new site's JSON docs (`<type>/<slug>.json`).
+  No registration needed — `nuxt.config.ts` pre-render auto-scans this folder and
+  `utils/site.ts` picks the docs up via glob.
+
+**Only if the new site has a doc type you don't have**
+- `utils/renderers.ts` — add e.g. `blog: BlogPost`
+- `components/BlogPost.vue` — a new renderer component for that type
+
+**Nice-to-have**
+- `nuxt.config.ts` — the PWA `manifest.name` / `short_name` (`"json_site_generator"`
+  / `"JSON Site Gen"` by default)
+- `assets/css/main.css` + `tailwind.config.ts` — if the new site wants different
+  colors/fonts/width
+
+**Then:** `npm run generate` (or `npm run dev`), done. No page/layout/route changes.
+
+> Want multiple sites side-by-side in one repo? Swap `content/` for per-site
+> folders (e.g. `content/<site>/{site.json,docs/}`) driven by an env/arg. The
+> current codebase only hosts a single site.
+
 ### Doc types
 - `thread` — top-level `content` string + optional `replies[]` (`Thread.vue`)
 - `post` — `content` **or** structured `body[]`, plus `created_at`, `tags[]`,

@@ -1,10 +1,3 @@
 <template>
-  <AllSites v-if="!activeSite" />
-  <SiteLanding v-else :site="activeSite" />
+  <SiteLanding />
 </template>
-
-<script setup>
-import { useActiveSite } from "~/utils/sites";
-
-const activeSite = useActiveSite();
-</script>

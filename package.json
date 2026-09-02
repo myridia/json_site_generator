@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node scripts/run.mjs dev",
+    "dev": "nuxt dev",
     "build": "nuxt build",
-    "generate": "node scripts/run.mjs generate",
+    "generate": "nuxt generate",
     "preview": "nuxt preview"
   },
   "engines": {

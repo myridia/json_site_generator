@@ -6,15 +6,15 @@
   "nav": [
     {
       "label": "Home",
-      "url": "/s/myridia"
+      "url": "/"
     },
     {
       "label": "Notebook",
-      "url": "/s/myridia/docs/post/tesla-ether-and-monad"
+      "url": "/docs/post/tesla-ether-and-monad"
     },
     {
       "label": "Contact us",
-      "url": "/s/myridia"
+      "url": "/"
     }
   ],
   "footer": "Copyleft 2026",
@@ -22,23 +22,23 @@
     "hero": [
       {
         "label": "Free Software",
-        "url": "/s/myridia"
+        "url": "/"
       },
       {
         "label": "Free Market",
-        "url": "/s/myridia"
+        "url": "/"
       },
       {
         "label": "Free People",
-        "url": "/s/myridia"
+        "url": "/"
       },
       {
         "label": "Free Land",
-        "url": "/s/myridia"
+        "url": "/"
       },
       {
         "label": "Free Money",
-        "url": "/s/myridia"
+        "url": "/"
       }
     ],
     "columns": [

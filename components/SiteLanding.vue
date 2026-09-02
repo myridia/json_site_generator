@@ -2,7 +2,7 @@
   <section>
     <ul v-if="home.hero && home.hero.length" class="m-0 mb-6 flex list-none flex-wrap gap-3 p-0">
       <li v-for="(tile, i) in home.hero" :key="tile.label || i" class="border-2 border-dotted border-[#a8a8a8] bg-white px-4 py-2">
-        <NuxtLink :to="resolveSitePath(site.name, tile.url)" class="font-heading text-[1.3em] italic no-underline text-myridia-green hover:text-myridia-ink">
+        <NuxtLink :to="tile.url" class="font-heading text-[1.3em] italic no-underline text-myridia-green hover:text-myridia-ink">
           {{ tile.label }}
         </NuxtLink>
       </li>
@@ -52,18 +52,12 @@
 </template>
 
 <script setup>
-import { resolveSitePath } from "~/utils/sites";
+import { site, docs } from "~/utils/site";
 
-const props = defineProps({
-  site: { type: Object, required: true },
-});
-
-const site = computed(() => props.site);
-
-const home = computed(() => site.value.config.home || { hero: [], columns: [] });
+const home = computed(() => site.home || { hero: [], columns: [] });
 
 const recentPosts = computed(() =>
-  site.value.docs
+  docs
     .filter((d) => d.type === "post")
     .sort((a, b) => (b.doc.created_at || "").localeCompare(a.doc.created_at || ""))
     .slice(0, 5)

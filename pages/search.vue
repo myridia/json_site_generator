@@ -21,9 +21,9 @@
       <p v-if="!results.length" class="mt-3 text-myridia-muted">No matches.</p>
 
       <ul v-else class="mt-4 list-none">
-        <li v-for="r in results" :key="`${r.site}-${r.type}-${r.slug}`" class="mb-3">
+        <li v-for="r in results" :key="`${r.type}-${r.slug}`" class="mb-3">
           <NuxtLink
-            :to="docHref(r)"
+            :to="`/docs/${r.type}/${r.slug}`"
             class="font-heading text-[1.2em] italic no-underline text-myridia-green hover:text-myridia-ink"
           >
             {{ r.title }}
@@ -37,25 +37,13 @@
 
 <script setup>
 import { searchDocs } from "~/utils/search";
-import { useActiveSite } from "~/utils/sites";
 
 const route = useRoute();
 const router = useRouter();
 
-const activeSite = useActiveSite();
-
 const query = ref(route.query.q ? String(route.query.q) : "");
 
-const results = computed(() =>
-  query.value
-    ? searchDocs(query.value, { site: activeSite.value?.name || undefined })
-    : []
-);
-
-function docHref(r) {
-  const base = `/docs/${r.type}/${r.slug}`;
-  return activeSite.value ? base : `${base}?site=${r.site}`;
-}
+const results = computed(() => (query.value ? searchDocs(query.value) : []));
 
 function onSearch() {
   const q = query.value.trim();

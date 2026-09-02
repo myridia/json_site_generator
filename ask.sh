@@ -1,26 +1,17 @@
 #!/bin/sh
 # json_site_generator — Task Runner
-# Usage: ./ask.sh [site]   (empty site = all-sites listing)
 
 cd "$(dirname "$0")" || exit 1
 
-SITE="${1:-}"
-
-if [ -z "$SITE" ]; then
-  printf "\n  Site name (Enter for all-sites listing): "
-  read -r SITE
-fi
-
-printf "\n  json_site_generator — Task Runner\n"
-printf "  Active site: %s\n\n" "${SITE:-<none — all-sites listing>}"
+printf "\n  json_site_generator — Task Runner\n\n"
 
 while :; do
   printf "  ┌─────┬──────────────────────────────────────────────────┐\n"
   printf "  │  ID │ Description                                      │\n"
   printf "  ├─────┼──────────────────────────────────────────────────┤\n"
   printf "  │  1  │ Install — npm install                            │\n"
-  printf "  │  2  │ Dev — live dev server (site / listing)           │\n"
-  printf "  │  3  │ Generate — static build for the active site      │\n"
+  printf "  │  2  │ Dev — live dev server (HMR)                      │\n"
+  printf "  │  3  │ Generate — static build into .output/public      │\n"
   printf "  │  4  │ Build — nuxt build (server bundle)               │\n"
   printf "  │  5  │ Generate + Preview — build then serve             │\n"
   printf "  │  6  │ Preview — serve .output/public (port 5000)       │\n"
@@ -38,28 +29,26 @@ while :; do
       npm install
       ;;
     2)
-      printf "...npm run dev %s\n\n" "$SITE"
+      printf "...npm run dev\n\n"
       printf "  Open these in your browser:\n"
-      printf "    http://localhost:3000/                          # landing (or site listing)\n"
-      if [ -n "$SITE" ]; then
-        printf "    http://localhost:3000/docs/<type>/<slug>        # a doc\n"
-      fi
-      printf "    http://localhost:3000/search                      # search\n"
+      printf "    http://localhost:3000/                        # landing (hero + recent)\n"
+      printf "    http://localhost:3000/docs/<type>/<slug>      # a doc\n"
+      printf "    http://localhost:3000/search                  # search\n"
       printf "  Tip: edit any .vue file or doc JSON and it hot-reloads live.\n"
       printf "  Vue Devtools widget sits in the bottom corner (http://localhost:3000/_nuxt).\n\n"
-      npm run dev "$SITE"
+      npm run dev
       ;;
     3)
-      printf "...npm run generate %s\n\n" "$SITE"
-      npm run generate "$SITE"
+      printf "...npm run generate\n\n"
+      npm run generate
       ;;
     4)
       printf "...npm run build\n\n"
       npm run build
       ;;
     5)
-      printf "...npm run generate %s\n\n" "$SITE"
-      npm run generate "$SITE"
+      printf "...npm run generate\n\n"
+      npm run generate
       printf "\n...serving .output/public on http://localhost:5000\n\n"
       npx serve .output/public -l 5000
       ;;

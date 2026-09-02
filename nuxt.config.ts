@@ -8,12 +8,6 @@ export default defineNuxtConfig({
 
   modules: ["@vite-pwa/nuxt", "@nuxtjs/tailwindcss"],
 
-  runtimeConfig: {
-    public: {
-      site: "",
-    },
-  },
-
   app: {
     head: {
       charset: "utf-8",
@@ -23,7 +17,7 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: ["/", ...buildSiteRoutes()],
+      routes: ["/", ...buildDocRoutes()],
     },
   },
 
@@ -55,10 +49,8 @@ export default defineNuxtConfig({
   },
 });
 
-function buildSiteRoutes() {
-  const site = process.env.NUXT_PUBLIC_SITE;
-  if (!site) return [];
-  const src = fileURLToPath(new URL(`./content/sites/${site}/docs/`, import.meta.url));
+function buildDocRoutes() {
+  const src = fileURLToPath(new URL("./content/docs/", import.meta.url));
   if (!existsSync(src)) return [];
   const routes = [];
   for (const type of readdirSync(src)) {

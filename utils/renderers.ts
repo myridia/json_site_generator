@@ -1,13 +1,8 @@
-import type { Component } from "vue";
-import Thread from "~/components/Thread.vue";
-import Post from "~/components/Post.vue";
-import FallbackDoc from "~/components/FallbackDoc.vue";
-
-const renderers: Record<string, Component> = {
-  thread: Thread,
-  post: Post,
+export const DOC_RENDERERS: Record<string, string> = {
+  thread: "Thread",
+  post: "Post",
 };
 
-export function resolveRenderer(type: string): Component {
-  return renderers[type] || FallbackDoc;
+export function rendererName(type: string): string {
+  return DOC_RENDERERS[type] || "FallbackDoc";
 }

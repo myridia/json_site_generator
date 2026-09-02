@@ -1,0 +1,151 @@
+body {
+  margin: auto;
+  font-family: arial, helvetica, sans-serif;
+  font-size: 14px;
+  color: #333;
+  background-color: #eee;
+}
+
+h1,
+h2,
+h3 {
+  font-family: times, "Times New Roman", serif;
+  font-style: italic;
+  color: #333;
+}
+
+a {
+  color: #88bb00;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #333;
+}
+
+.site-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 18px 0 0;
+  font-family: arial, helvetica, sans-serif;
+}
+
+.site-logo {
+  height: 24px;
+  width: auto;
+}
+
+.site-title {
+  font-family: times, "Times New Roman", serif;
+  font-size: 1.6em;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: #8a8a8a;
+}
+
+.site-slogan {
+  display: block;
+  margin: 4px 0 0;
+  padding: 3px 20px;
+  border-top: 2px dotted #8a8a8a;
+  border-bottom: 2px dotted #8a8a8a;
+  text-align: center;
+  font-family: times, "Times New Roman", serif;
+  font-size: 1.2em;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: #4e4e4e;
+}
+
+.site-search {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 320px;
+  margin-top: 12px;
+}
+
+.site-search-input {
+  width: 100%;
+  border: 2px dotted #a8a8a8;
+  background: #fff;
+  padding: 2px 8px;
+  font-size: 0.9em;
+}
+
+.site-search-btn {
+  border: 2px dotted #a8a8a8;
+  background: #fff;
+  padding: 2px 8px;
+  font-size: 0.9em;
+}
+
+.site-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+  flex: 1;
+}
+
+.site-main {
+  flex: 1;
+}
+
+.site-nav {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav li {
+  margin: 5px 0;
+}
+
+.site-nav a {
+  font-family: times, "Times New Roman", serif;
+  font-size: 1.4em;
+  font-style: italic;
+}
+
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1280px;
+  margin: 13px auto;
+  padding: 3px 20px 32px;
+  border-top: 2px dotted #a8a8a8;
+  border-bottom: 2px dotted #a8a8a8;
+  font-family: arial, helvetica, sans-serif;
+  font-size: 1em;
+  color: #8a8a8a;
+}
+
+.site-footer-logo {
+  height: 24px;
+  width: auto;
+}

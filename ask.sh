@@ -4,6 +4,8 @@
 cd "$(dirname "$0")" || exit 1
 
 printf "\n  json_site_generator — Task Runner\n\n"
+printf "  Site folders live in content/<name>/ (site.json, layout.vue, docs/).\n"
+printf "  One folder  -> auto;  many folders -> pass the name: npm run dev <name>\n\n"
 
 while :; do
   printf "  ┌─────┬──────────────────────────────────────────────────┐\n"
@@ -17,6 +19,7 @@ while :; do
   printf "  │  6  │ Preview — serve .output/public (port 5000)       │\n"
   printf "  │  7  │ Clean — remove .nuxt/.output/vite cache          │\n"
   printf "  │  8  │ Fix ownership — sudo chown veto:veto .           │\n"
+  printf "  │  9  │ List site folders in content/                    │\n"
   printf "  │  0  │ Exit                                              │\n"
   printf "  └─────┴──────────────────────────────────────────────────┘\n\n"
 
@@ -65,6 +68,10 @@ while :; do
     8)
       printf "...sudo chown veto:veto . -Rf\n\n"
       sudo chown veto:veto . -Rf
+      ;;
+    9)
+      printf "...site folders under content/\n\n"
+      ls -d content/*/ 2>/dev/null | sed 's#content/##; s#/##'
       ;;
     0)
       printf "Goodbye!\n"

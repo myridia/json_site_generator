@@ -52,12 +52,14 @@
 </template>
 
 <script setup>
-import { site, docs } from "~/utils/site";
+import { useActiveSite } from "~/utils/site";
 
-const home = computed(() => site.home || { hero: [], columns: [] });
+const activeSite = useActiveSite();
+
+const home = computed(() => activeSite.value?.config.home || { hero: [], columns: [] });
 
 const recentPosts = computed(() =>
-  docs
+  (activeSite.value?.docs || [])
     .filter((d) => d.type === "post")
     .sort((a, b) => (b.doc.created_at || "").localeCompare(a.doc.created_at || ""))
     .slice(0, 5)

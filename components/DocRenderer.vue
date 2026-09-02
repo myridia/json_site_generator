@@ -1,15 +1,16 @@
 <template>
-  <component :is="renderer" :doc="doc" />
+  <component :is="Renderer" :doc="doc" v-if="Renderer" />
+  <FallbackDoc v-else :doc="doc" />
 </template>
 
 <script setup>
-import { computed } from "vue";
-import { resolveRenderer } from "~/utils/renderers";
+import { rendererName } from "~/utils/renderers";
+import FallbackDoc from "~/components/FallbackDoc.vue";
 
 const props = defineProps({
   type: { type: String, required: true },
   doc: { type: Object, required: true },
 });
 
-const renderer = computed(() => resolveRenderer(props.type));
+const Renderer = useSiteComponent(rendererName(props.type));
 </script>

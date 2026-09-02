@@ -37,13 +37,15 @@
 
 <script setup>
 import { searchDocs } from "~/utils/search";
+import { useActiveSite } from "~/utils/site";
 
 const route = useRoute();
 const router = useRouter();
+const activeSite = useActiveSite();
 
 const query = ref(route.query.q ? String(route.query.q) : "");
 
-const results = computed(() => (query.value ? searchDocs(query.value) : []));
+const results = computed(() => (query.value ? searchDocs(activeSite.value, query.value) : []));
 
 function onSearch() {
   const q = query.value.trim();

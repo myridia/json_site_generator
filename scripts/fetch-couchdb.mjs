@@ -14,6 +14,7 @@ function parseArgs() {
     user: read("-u"),
     pass: read("-p"),
     type: read("-t") || "doc",
+    site: read("-s") || "myridia",
   };
 }
 
@@ -44,7 +45,7 @@ async function main() {
   }
 
   const body = await resp.json();
-  const OUT = new URL("../content/docs/", import.meta.url);
+  const OUT = new URL(`../content/${opts.site}/docs/`, import.meta.url);
   let n = 0;
   for (const row of body.rows || []) {
     const doc = row.doc;
@@ -56,7 +57,7 @@ async function main() {
     writeFileSync(file, JSON.stringify(doc, null, 2) + "\n", "utf8");
     n++;
   }
-  console.log(`Pulled ${n} doc(s) from ${db} -> content/docs/`);
+  console.log(`Pulled ${n} doc(s) from ${db} -> content/${opts.site}/docs/`);
 }
 
 main();

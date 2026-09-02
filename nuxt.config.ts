@@ -15,9 +15,15 @@ export default defineNuxtConfig({
     },
   },
 
+  runtimeConfig: {
+    public: {
+      site: process.env.NUXT_PUBLIC_SITE || "",
+    },
+  },
+
   nitro: {
     prerender: {
-      routes: ["/", ...buildDocRoutes()],
+      routes: ["/", "/search", ...buildSiteRoutes()],
     },
   },
 
@@ -49,8 +55,25 @@ export default defineNuxtConfig({
   },
 });
 
-function buildDocRoutes() {
-  const src = fileURLToPath(new URL("./content/docs/", import.meta.url));
+function activeSiteName(): string {
+  const env = (process.env.NUXT_PUBLIC_SITE || "").trim();
+  if (env) return env;
+  const dirs = readdirSync("content", { withFileTypes: true })
+    .filter((d) => d.isDirectory() && !d.name.startsWith("."))
+    .map((d) => d.name);
+  if (dirs.length === 1) return dirs[0];
+  if (dirs.length === 0) {
+    console.error("[nuxt] no site folder found under content/ (create content/<name>/ with site.json, layout.vue, docs/)");
+  } else {
+    console.error(`[nuxt] multiple site folders (${dirs.join(", ")}) — run "npm run build <name>" / "npm run generate <name>"`);
+  }
+  return "";
+}
+
+function buildSiteRoutes() {
+  const name = activeSiteName();
+  if (!name) return [];
+  const src = fileURLToPath(new URL(`./content/${name}/docs/`, import.meta.url));
   if (!existsSync(src)) return [];
   const routes = [];
   for (const type of readdirSync(src)) {

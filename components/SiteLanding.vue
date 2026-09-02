@@ -1,21 +1,31 @@
 <template>
   <section>
-    <div v-if="home.columns && home.columns.length" class="flex flex-wrap items-start gap-8">
-      <div v-for="(col, i) in home.columns" :key="i" :class="home.columns.length > 1 ? 'flex-1' : 'w-full'">
-        <h3 v-if="col.heading" class="mb-2 text-[1.5em] font-bold">{{ col.heading }}</h3>
-        <p v-for="(para, j) in col.paragraphs" :key="j" class="mb-4 leading-6">{{ para }}</p>
+    <div v-if="home.columns && home.columns.length" class="mb-8 rounded-xl border border-[#e3e5e0] bg-white p-6 shadow-sm md:p-10">
+      <p v-if="home.columns.some((c) => c.heading)" class="mb-2 text-[0.72em] font-semibold uppercase tracking-[0.12em] text-myridia-green">
+        Manifesto
+      </p>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div v-for="(col, i) in home.columns" :key="i">
+          <h2 v-if="col.heading" class="mb-3 text-[1.35em] font-bold text-myridia-ink">{{ col.heading }}</h2>
+          <p v-for="(para, j) in col.paragraphs" :key="j" class="mb-4 leading-7 text-[#3c3d40]">{{ para }}</p>
+        </div>
       </div>
     </div>
 
-    <section id="projects" v-if="home.repos && home.repos.length" class="mt-8">
-      <h2 class="mb-3 border-b-2 border-dotted border-[#a8a8a8] pb-1 text-[1.6em] font-bold">
-        Projects
-      </h2>
-      <ul class="flex list-none flex-wrap items-center gap-3 p-0">
+    <section
+      id="projects"
+      v-if="home.repos && home.repos.length"
+      class="mt-8 rounded-xl border border-[#e3e5e0] bg-white p-6 shadow-sm md:p-10"
+    >
+      <h2 class="mb-6 text-[1.35em] font-bold text-myridia-ink">Projects</h2>
+      <ul class="grid list-none grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4 p-0">
         <li v-for="repo in home.repos" :key="repo.name">
-          <NuxtLink :to="repo.url" class="flex flex-col items-center gap-1 no-underline">
+          <NuxtLink
+            :to="repo.url"
+            class="flex flex-col items-center gap-3 rounded-lg border border-[#e9eae6] bg-[#fafbfa] p-4 no-underline transition hover:border-myridia-green hover:shadow-md"
+          >
             <img v-if="repo.logo" :src="repo.logo" :alt="repo.name" class="h-24 w-auto" />
-            <span class="font-body text-[0.9em] text-myridia-ink hover:text-myridia-green">
+            <span class="text-center font-body text-[0.85em] leading-tight text-myridia-ink">
               {{ repo.label || niceName(repo.name) }}
             </span>
           </NuxtLink>

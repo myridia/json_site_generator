@@ -6,9 +6,9 @@
         type="text"
         name="q"
         placeholder="Search all pages..."
-        class="w-full max-w-md border-2 border-dotted border-[#a8a8a8] bg-[#eee] px-3 py-1 text-[1em]"
+        class="w-full max-w-md rounded-lg border border-[#d9dad6] bg-white px-3 py-2 text-[1em] shadow-sm focus:border-myridia-green focus:outline-none focus:ring-2 focus:ring-myridia-green/25"
       />
-      <button type="submit" class="ml-2 border-2 border-dotted border-[#a8a8a8] bg-[#eee] px-3 py-1 font-heading italic">
+      <button type="submit" class="ml-2 rounded-lg border-none bg-myridia-green px-4 py-2 font-semibold text-white">
         Search
       </button>
     </form>
@@ -24,7 +24,7 @@
         <li v-for="r in results" :key="`${r.type}-${r.slug}`" class="mb-3">
           <NuxtLink
             :to="`/docs/${r.type}/${r.slug}`"
-            class="font-heading text-[1.2em] italic no-underline text-myridia-green hover:text-myridia-ink"
+            class="font-body text-[1.15em] no-underline text-myridia-green hover:text-myridia-ink"
           >
             {{ r.title }}
           </NuxtLink>

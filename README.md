@@ -1,5 +1,4 @@
 <img src="json_site_generator.svg" alt="json_site_generator" width="120">
-
 # json_site_generator
 Static site generator that renders one static, crawlable page per JSON document —
 Vue 3 (Nuxt) + Tailwind + PWA, with a shared site shell applied to every page.

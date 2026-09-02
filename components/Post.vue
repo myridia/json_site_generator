@@ -2,14 +2,14 @@
   <article>
     <header class="mb-4">
       <h1 class="mb-1 text-[1.8em] font-bold">{{ doc.title }}</h1>
-      <p v-if="doc.created_at" class="mb-3 text-[0.85em] text-[#777]">
+      <p v-if="doc.created_at" class="mb-3 text-[0.85em] text-[#777] dark:text-[#9aa0a6]">
         <time :datetime="doc.created_at">{{ formatDate(doc.created_at) }}</time>
       </p>
       <ul v-if="doc.tags && doc.tags.length" class="m-0 flex list-none gap-2 p-0">
         <li
           v-for="tag in doc.tags"
           :key="tag"
-          class="border border-[#999] bg-[#eee] px-2 py-0.5 text-[1em] text-myridia-green"
+          class="border border-[#999] bg-[#eee] px-2 py-0.5 text-[1em] text-myridia-green dark:border-[#3a3f45] dark:bg-[#262a2e]"
         >
           {{ tag }}
         </li>

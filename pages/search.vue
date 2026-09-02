@@ -6,7 +6,7 @@
         type="text"
         name="q"
         placeholder="Search all pages..."
-        class="w-full max-w-md rounded-lg border border-[#d9dad6] bg-white px-3 py-2 text-[1em] shadow-sm focus:border-myridia-green focus:outline-none focus:ring-2 focus:ring-myridia-green/25"
+        class="w-full max-w-md rounded-lg border border-[#d9dad6] bg-white px-3 py-2 text-[1em] text-[#2b2b2b] shadow-sm focus:border-myridia-green focus:outline-none focus:ring-2 focus:ring-myridia-green/25 dark:border-[#3a3f45] dark:bg-[#1f2226] dark:text-[#d8dad6]"
       />
       <button type="submit" class="ml-2 rounded-lg border-none bg-myridia-green px-4 py-2 font-semibold text-white">
         Search
@@ -24,11 +24,11 @@
         <li v-for="r in results" :key="`${r.type}-${r.slug}`" class="mb-3">
           <NuxtLink
             :to="`/docs/${r.type}/${r.slug}`"
-            class="font-body text-[1.15em] no-underline text-myridia-green hover:text-myridia-ink"
+            class="font-body text-[1.15em] no-underline text-myridia-green hover:text-myridia-ink dark:hover:text-[#f2f3f0]"
           >
             {{ r.title }}
           </NuxtLink>
-          <span class="ml-2 text-[0.8em] text-[#777]">/docs/{{ r.type }}</span>
+          <span class="ml-2 text-[0.8em] text-[#777] dark:text-[#9aa0a6]">/docs/{{ r.type }}</span>
         </li>
       </ul>
     </template>

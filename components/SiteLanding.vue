@@ -12,10 +12,10 @@
       <h2 class="mb-3 border-b-2 border-dotted border-[#a8a8a8] pb-1 text-[1.6em] font-bold">
         Projects
       </h2>
-      <ul class="grid list-none grid-cols-2 gap-3 p-0 md:grid-cols-3">
-        <li v-for="repo in home.repos" :key="repo.name" class="border-2 border-dotted border-[#a8a8a8] bg-white p-3">
+      <ul class="grid list-none grid-cols-2 gap-4 p-0 md:grid-cols-3">
+        <li v-for="repo in home.repos" :key="repo.name">
           <NuxtLink :to="repo.url" class="flex items-center gap-2 no-underline">
-            <img v-if="repo.logo" :src="repo.logo" :alt="repo.name" class="h-8 w-auto" />
+            <img v-if="repo.logo" :src="repo.logo" :alt="repo.name" class="h-14 w-auto" />
             <span class="font-heading text-[1.1em] italic text-myridia-green hover:text-myridia-ink">
               {{ repo.name }}
             </span>

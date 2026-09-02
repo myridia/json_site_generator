@@ -6,9 +6,9 @@
         type="text"
         name="q"
         placeholder="Search all pages..."
-        class="w-full max-w-md border-2 border-dotted border-[#a8a8a8] bg-white px-3 py-1 text-[1em]"
+        class="w-full max-w-md border-2 border-dotted border-[#a8a8a8] bg-[#eee] px-3 py-1 text-[1em]"
       />
-      <button type="submit" class="ml-2 border-2 border-dotted border-[#a8a8a8] bg-white px-3 py-1 font-heading italic">
+      <button type="submit" class="ml-2 border-2 border-dotted border-[#a8a8a8] bg-[#eee] px-3 py-1 font-heading italic">
         Search
       </button>
     </form>

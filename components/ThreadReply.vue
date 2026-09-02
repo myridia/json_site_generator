@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-3 rounded border border-[#a8a8a8] bg-white p-3" :class="{ 'ml-6': reply.parent_id }">
+  <div class="mb-3 rounded border border-[#a8a8a8] bg-[#eee] p-3" :class="{ 'ml-6': reply.parent_id }">
     <span class="font-heading text-[1.2em] italic">{{ reply.author?.name || reply.author?.user_id || "Anonymous" }}</span>
     <span v-if="reply.created_at" class="ml-2 text-[0.75em] text-[#777]">
       <time :datetime="reply.created_at">{{ formatDate(reply.created_at) }}</time>

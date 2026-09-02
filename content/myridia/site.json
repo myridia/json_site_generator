@@ -1,6 +1,6 @@
 {
   "title": "Myridia",
-  "tagline": "Information Epoch",
+  "tagline": "Free Software, Market, People, Land and Money",
   "slogan": "When in doubt, use brute force.",
   "logo": "/imgs/logo.png",
   "nav": [
@@ -9,51 +9,29 @@
       "url": "/"
     },
     {
-      "label": "Notebook",
+      "label": "Forum",
       "url": "/docs/post/tesla-ether-and-monad"
     },
     {
       "label": "Contact us",
-      "url": "/"
+      "url": "/docs/page/contact"
     }
   ],
   "footer": "Copyleft 2026",
   "home": {
-    "hero": [
-      {
-        "label": "Free Software",
-        "url": "/"
-      },
-      {
-        "label": "Free Market",
-        "url": "/"
-      },
-      {
-        "label": "Free People",
-        "url": "/"
-      },
-      {
-        "label": "Free Land",
-        "url": "/"
-      },
-      {
-        "label": "Free Money",
-        "url": "/"
-      }
-    ],
     "columns": [
       {
         "heading": "Welcome to the real world",
         "paragraphs": [
-          "Cyberspace is much more than what you can find from an Apple Store. We reclaim it for the people, putting people first and letting borders sit where they serve real needs. The network is not a thing to be owned; it is a thing to be shared.",
-          "We believe in a revolution that is iterative, open, and civil. Build free software, keep markets open, and let knowledge travel as freely as the medium that carries it. When in doubt, use brute force — and share what you find."
+          "Money is the only commodity nobody actually wants; it matters only when it moves. Hoarded money stops the one thing every community needs — circulation. Silvio Gesell saw this clearest: free money decays like the goods it buys, so it cannot be sat on, only spent. Money that must keep moving finances work instead of sleeping in vaults — that is the first freedom of all.",
+          "Land is not made by anyone, so no one may profit from merely holding it. Freiwirtschaft returns ground rent to society: free land means the earth stays a commons, and work is rewarded for what it builds, not for where it happens to stand."
         ]
       },
       {
         "heading": "",
         "paragraphs": [
-          "This site is a notebook of ideas, a laboratory for free thought, and a record of the information epoch. Everything here is generated from plain JSON — one page, one document, no hidden strings.",
-          "Search anything, read deeply, and take the ideas wherever they lead. The world is a continuous medium; our job is to stop treating it like a set of walls."
+          "Markets and people follow the same law. Markets are free when hoarding and cartels cannot tax the rest of us; people are free when their labor is not held hostage by idle capital. Software is pure thought — the freest thing that exists — and free software applies the Gesell principle to minds: ideas must circulate, or they rot in private vaults.",
+          "Society needs free software, markets, people, land and money because they form one circle. Money must circulate, land must be common, markets must stay open, people must be sovereign, and code must be shared. None survives alone; each unlocks the rest. That is why we reclaim the network for people — one page, one document, no hidden strings."
         ]
       }
     ],
@@ -63,12 +41,6 @@
         "url": "https://github.com/myridia/.emacs.d",
         "logo": "https://github.com/myridia/.emacs.d/raw/main/.emacs.d.svg"
       },
-      {
-        "name": ".emacs.d",
-        "url": "https://github.com/myridia/.emacs.d",
-        "logo": "https://github.com/myridia/.emacs.d/raw/main/.emacs.d.svg"
-      },
-	
       {
         "name": "3dsolutions.hk",
         "url": "https://github.com/myridia/3dsolutions.hk",

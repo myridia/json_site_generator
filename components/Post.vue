@@ -9,7 +9,7 @@
         <li
           v-for="tag in doc.tags"
           :key="tag"
-          class="border border-[#999] bg-white px-2 py-0.5 text-[1em] text-myridia-green"
+          class="border border-[#999] bg-[#eee] px-2 py-0.5 text-[1em] text-myridia-green"
         >
           {{ tag }}
         </li>

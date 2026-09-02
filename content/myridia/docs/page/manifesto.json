@@ -1,0 +1,28 @@
+{
+  "_id": "page:manifesto",
+  "type": "page",
+  "title": "Manifesto",
+  "body": [
+    {
+      "heading": "Free money",
+      "paragraphs": [
+        "Money must circulate. In the tradition of Silvio Gesell, money that is hoarded strangles the exchange it is supposed to serve — so money should carry a cost for standing still, and work should not.",
+        "When money moves, the free market works for everyone."
+      ]
+    },
+    {
+      "heading": "Free land",
+      "paragraphs": [
+        "The Earth is the commons of all. Nobody can honestly claim it as property to be bought and sold forever. What is private is the improvement, not the ground.",
+        "Ground rent belongs to society; labour belongs to the labourer."
+      ]
+    },
+    {
+      "heading": "Free market, free people, free software",
+      "paragraphs": [
+        "The same law holds everywhere: goods, code and ideas must be free to circulate. Software that cannot be forked is money that cannot move.",
+        "When in doubt, use brute force — and share the source."
+      ]
+    }
+  ]
+}

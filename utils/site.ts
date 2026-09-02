@@ -3,6 +3,7 @@ import SiteLanding from "~/components/SiteLanding.vue";
 import FallbackDoc from "~/components/FallbackDoc.vue";
 import Thread from "~/components/Thread.vue";
 import Post from "~/components/Post.vue";
+import Page from "~/components/Page.vue";
 
 type SiteHome = {
   hero?: { label: string; url: string }[];
@@ -82,6 +83,7 @@ const engineComponents: Record<string, Component> = {
   FallbackDoc,
   Thread,
   Post,
+  Page,
 };
 
 export function useSiteComponent(name: string) {

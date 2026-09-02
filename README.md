@@ -66,7 +66,8 @@ Rendered at `/docs/<type>/<slug>`.
 
 ### Doc renderers
 The engine ships default renderers (`thread` → `Thread.vue`, `post` →
-`Post.vue`, unknown → `FallbackDoc.vue`, mapped in `utils/renderers.ts`). A site
+`Post.vue`, `page` → `Page.vue`, unknown → `FallbackDoc.vue`, mapped in
+`utils/renderers.ts`). A site
 overrides any of them by adding its own file in the bag:
 ```
 content/<name>/components/Post.vue     # used instead of the engine Post
@@ -76,11 +77,12 @@ Resolution order: **per-site `components/<Name>.vue` → engine default → Fall
 ### Doc types
 - `thread` — top-level `content` string + optional `replies[]` (`Thread.vue`)
 - `post` — `content` **or** structured `body[]`, plus `created_at`, `tags[]`,
-  `summary` (`Post.vue`). Posts are surfaced as "Recent from the Notebook" on the
-  landing page and are searchable.
+  `summary` (`Post.vue`). Searchable.
+- `page` — standing site pages (About/Contact/Manifesto); `content` **or**
+  structured `body[]`, no date/tags (`Page.vue`).
 
 ## URLs
-- `/` — landing page (hero/repos/manifesto + "Recent from the Notebook")
+- `/` — landing page ("Welcome to the real world" manifesto + projects grid)
 - `/docs/<type>/<slug>` — one doc
 - `/search?q=<query>` — search (indexed per active site)
 
@@ -91,7 +93,8 @@ Resolution order: **per-site `components/<Name>.vue` → engine default → Fall
 - **Engine default skin** (used by the shared renderers, failsafe) →
   `assets/css/main.css` + `tailwind.config.ts` (`myridia.green` `#88bb00`)
 - **Engine components** (landing + doc renderers, overridable per site) →
-  `components/SiteLanding.vue`, `Thread.vue`, `Post.vue`, `FallbackDoc.vue`
+  `components/SiteLanding.vue`, `Thread.vue`, `Post.vue`, `Page.vue`,
+  `FallbackDoc.vue`
 
 ## Structure
 ```
@@ -102,11 +105,12 @@ Resolution order: **per-site `components/<Name>.vue` → engine default → Fall
 ├── components
 │   ├── SiteLayout.vue         # resolves the active site's layout.vue
 │   ├── DocRenderer.vue        # type -> renderer dispatcher (bag override first)
-│   ├── SiteLanding.vue        # default landing (hero/repos/manifesto/recent)
+│   ├── SiteLanding.vue        # default landing (manifesto + projects grid)
 │   ├── FallbackDoc.vue        # generic fallback for unknown types
 │   ├── Thread.vue             # default thread renderer
 │   ├── ThreadReply.vue        # default thread reply renderer
-│   └── Post.vue               # default notebook post renderer
+│   ├── Post.vue               # default notebook post renderer
+│   └── Page.vue               # default basic page renderer
 ├── content
 │   └── <name>/                # one folder per site (the "bag")
 │       ├── site.json

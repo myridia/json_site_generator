@@ -1,6 +1,5 @@
 # AGENTS.md — json_site_generator
 
-<<<<<<< HEAD
 ## Overview
 Static site generator (SSG) that renders one static page per JSON document.
 Built on Nuxt so the output is fully static (crawler-friendly, one stored HTML
@@ -31,10 +30,12 @@ Adding a site = add a folder; adding a doc = add a JSON file. No engine changes.
   `runtimeConfig.public.site` -> `useActiveSite()`.
 
 ## Doc types
-- `thread` — top-level `content` string + optional `replies[]` (Thread.vue)
+- `thread` — top-level `content` string + optional `replies[]` (Thread.vue).
 - `post` — `content` **or** structured `body[]` (`{heading?, paragraphs[]}[]`),
-  plus optional `created_at`, `tags[]`, `summary` (Post.vue). Posts are surfaced
-  as "Recent from the Notebook" on the landing page and are searchable.
+  plus optional `created_at`, `tags[]`, `summary` (Post.vue). Posts are
+  searchable.
+- `page` — standing site pages (About/Contact/Manifesto); `content` **or**
+  structured `body[]`, no date/tags (Page.vue).
 
 Renderer resolution order: **per-site `components/<Name>.vue` -> engine default
 -> `FallbackDoc.vue`** (`useSiteComponent` in `utils/site.ts`).
@@ -72,7 +73,9 @@ npm run generate <name> # builds a specific site (2+ folders present)
 - `components/DocRenderer.vue` — type -> renderer dispatcher (override first)
 - `components/Thread.vue`/`ThreadReply.vue` — thread renderer (tibellus thread schema)
 - `components/Post.vue` — notebook post renderer (content string or body[])
-- `components/SiteLanding.vue` — default landing (hero/repos/manifesto/recent posts)
+- `components/Page.vue` — basic page renderer (content string or body[])
+- `components/SiteLanding.vue` — default landing ("Welcome to the real world"
+  columns + projects grid)
 - `components/FallbackDoc.vue` — generic fallback for unknown types
 - `utils/site.ts` — bag loader: import.meta.glob over `content/*/` for
   `site.json`, `docs/`, `layout.vue`, `components/`; exports `sites`, `getSite`,
@@ -110,24 +113,3 @@ npm run generate <name> # builds a specific site (2+ folders present)
 - Do not commit secrets (CouchDB creds via env, never hardcoded).
 - Keep at most one site folder active when you want no-arg commands; with
   several folders you must pass the site name.
-=======
-## What this is
-A tool that generates static websites from JSON files.
-
-## Stack
-- JSON data files
-- Static site generation
-
-## Build
-No build / programming language identified yet — minimal project.
-
-## Run
-See project files for current implementation.
-
-## Structure
-- `README.md` — project description
-- `LICENSE` — license
-
-## Conventions
-- No comments in code unless asked.
->>>>>>> acb516643c4451dfa2208131d9cf0f1830b68442

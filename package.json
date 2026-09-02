@@ -6,7 +6,8 @@
     "dev": "node scripts/run.mjs dev",
     "build": "node scripts/run.mjs build",
     "generate": "node scripts/run.mjs generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "pagefind:build": "node scripts/build-pagefind.mjs"
   },
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.14.0",
     "@vite-pwa/nuxt": "^0.10.0",
+    "pagefind": "^1.5.2",
     "vite-plugin-pwa": "^1.0.0"
   }
 }

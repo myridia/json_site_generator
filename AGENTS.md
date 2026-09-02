@@ -40,11 +40,25 @@ Adding a site = add a folder; adding a doc = add a JSON file. No engine changes.
 Renderer resolution order: **per-site `components/<Name>.vue` -> engine default
 -> `FallbackDoc.vue`** (`useSiteComponent` in `utils/site.ts`).
 
-## Search (static, client-side)
-- `utils/search.ts` builds an in-memory index of every doc (title + summary +
-  full JSON text, lowercased) tagged with its site name; `searchDocs(site, q)`
-  ranks by hit count, scoped to the active site.
-- `/search?q=<query>` page (`pages/search.vue`) runs the client-side search.
+## Search (Pagefind, static + client-side)
+- `scripts/build-pagefind.mjs` feeds every doc's searchable text straight from
+  JSON into Pagefind's Node API (`addCustomRecord`), writing the pre-built
+  Rust/WASM index to `public/pagefind/`. No HTML staging, no JSON boilerplate in
+  the index. Run as a standalone task: `npm run pagefind:build` (ask.sh task 10).
+  It also mirrors the index into `.output/public/pagefind/` when that dir exists,
+  so it can rebuild the deployed index without a full site regen.
+- Recommended order for a fresh deploy: `npm run pagefind:build` then
+  `npm run generate` (so `public/pagefind` is copied into the output). Because
+  the pagefind:build standalone task also mirrors to `.output/public`, it is NOT
+  auto-hooked into generate/dev.
+- `/search?q=<query>` (`pages/search.vue`) dynamically imports
+  `/pagefind/pagefind.js` (client-only, via a variable path to dodge Vite's
+  static import analysis) and queries the local index.
+- Result metadata: `url`=`/docs/<type>/<slug>`, `title`, `type`, plus
+  `created_at`/`tags`. Searchable fields per doc: title, summary, tags, body
+  heading+paragraphs, thread content + nested replies.
+- `public/pagefind/` is generated and gitignored; index scales to hundreds of
+  thousands of docs (build-time cost only).
 - Search box lives in each site's `layout.vue` and submits to `/search`.
 
 ## Stack
@@ -69,7 +83,7 @@ npm run generate <name> # builds a specific site (2+ folders present)
   (`siteLayouts['/content/<name>/layout.vue']`) and wraps the page in it
 - `pages/index.vue` — landing; resolves `SiteLanding` via `useSiteComponent`
 - `pages/docs/[type]/[slug].vue` — per-doc page (active-site scoped)
-- `pages/search.vue` — client-side full-text search results (`?q=`)
+- `pages/search.vue` — Pagefind-powered full-text search results (`?q=`)
 - `components/DocRenderer.vue` — type -> renderer dispatcher (override first)
 - `components/Thread.vue`/`ThreadReply.vue` — thread renderer (tibellus thread schema)
 - `components/Post.vue` — notebook post renderer (content string or body[])
@@ -81,8 +95,8 @@ npm run generate <name> # builds a specific site (2+ folders present)
   `site.json`, `docs/`, `layout.vue`, `components/`; exports `sites`, `getSite`,
   `getSiteDoc`, `useActiveSite`, `useSiteComponent`, `siteLayouts`, `siteComponents`
 - `utils/renderers.ts` — doc-type -> component NAME registry (`rendererName`)
-- `utils/search.ts` — build-time per-site index + `searchDocs(site, query)`
 - `scripts/run.mjs` — site-selection wrapper used by dev/build/generate
+- `scripts/build-pagefind.mjs` — builds the Pagefind index into `public/pagefind`
 - `scripts/fetch-couchdb.mjs` — optional build-time CouchDB pull
   (`-s <site>` selects the bag, default `myridia`) into `content/<site>/docs/`
 - `nuxt.config.ts` — PWA module, Tailwind module, `runtimeConfig.public.site`,

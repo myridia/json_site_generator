@@ -20,6 +20,7 @@ while :; do
   printf "  │  7  │ Clean — remove .nuxt/.output/vite cache          │\n"
   printf "  │  8  │ Fix ownership — sudo chown veto:veto .           │\n"
   printf "  │  9  │ List site folders in content/                    │\n"
+  printf "  │  10 │ Search index — build Pagefind index (pagefind:build) │\n"
   printf "  │  0  │ Exit                                              │\n"
   printf "  └─────┴──────────────────────────────────────────────────┘\n\n"
 
@@ -72,6 +73,10 @@ while :; do
     9)
       printf "...site folders under content/\n\n"
       ls -d content/*/ 2>/dev/null | sed 's#content/##; s#/##'
+      ;;
+    10)
+      printf "...npm run pagefind:build\n\n"
+      npm run pagefind:build
       ;;
     0)
       printf "Goodbye!\n"

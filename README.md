@@ -20,23 +20,25 @@ each site's own theme, JSON docs, and renderer logic.
 ## Quick start
 ```bash
 npm install
-npm run generate   # builds static site into .output/public
+npm run dev myridia       # live dev for one site (default: all-sites listing)
+npm run generate myridia  # builds that site's static output into .output/public
 npx serve .output/public
 ```
 
 ### Add a document (to the myridia site)
 1. Add a JSON file: `content/sites/myridia/docs/<type>/<slug>.json`
 2. Ensure a renderer exists for `<type>` (registered in `utils/renderers.ts`), or it renders as fallback
-3. Rebuild: `npm run generate`
+3. Rebuild: `npm run generate myridia`
 
-Rendered at `/s/myridia/docs/<type>/<slug>`.
+Rendered at `/docs/<type>/<slug>`.
 
 ### Add a new site
 1. Create `content/sites/<site>/site.json` (theme shell) + `content/sites/<site>/docs/`
 2. Register that site's renderers in `utils/renderers.ts`
-3. Rebuild: `npm run generate`
+3. Rebuild: `npm run generate <site>`
 
-Rendered at `/s/<site>` and `/s/<site>/docs/<type>/<slug>`.
+Rendered at `/` and `/docs/<type>/<slug>` for that site. Run `npm run dev` (no site)
+or `npm run generate` (no site) to see an all-sites listing at `/`.
 
 ## Where does what go?
 
@@ -58,7 +60,7 @@ Your two inputs map to:
        "tagline": "...",
        "slogan": "...",
        "logo": "/imgs/logo.png",
-       "nav": [ { "label": "Home", "url": "/s/myridia" } ],
+       "nav": [ { "label": "Home", "url": "/" } ],
        "footer": "..."
      }
      ```
@@ -91,9 +93,11 @@ node scripts/fetch-couchdb.mjs -d <db> [-s <site>]               # pulls a named
 Fetched docs are written into `content/sites/<site>/docs/`, then build as normal.
 
 ## URL scheme
-- `/` — all sites listing
-- `/s/<site>` — a site's landing page
-- `/s/<site>/docs/<type>/<slug>` — one doc
+- Run with a site: `npm run dev <site>` / `npm run generate <site>`
+  - `/` — that site's landing page
+  - `/docs/<type>/<slug>` — one doc
+- Run without a site (default `myridia` is not applied; listing shown)
+  - `/` — all-sites listing; links carry `?site=<name>` so docs resolve to the right site
 
 ## Structure
 ```
@@ -104,6 +108,7 @@ Fetched docs are written into `content/sites/<site>/docs/`, then build as normal
 ├── app.vue                    # root app (NuxtLayout + NuxtPage)
 ├── assets/css/main.css        # Tailwind entry
 ├── components
+│   ├── AllSites.vue           # all-sites listing (root / when no site selected)
 │   ├── DocRenderer.vue        # per-site type -> renderer dispatcher
 │   ├── FallbackDoc.vue        # generic fallback for unknown types
 │   ├── Thread.vue             # thread renderer (tibellus thread schema)
@@ -114,19 +119,21 @@ Fetched docs are written into `content/sites/<site>/docs/`, then build as normal
 │       └── docs/<type>/<slug>.json   # that site's JSON docs
 ├── json_site_generator.svg
 ├── layouts/default.vue        # shared shell (header/nav/footer), site-driven
-├── nuxt.config.ts             # PWA + prerender routes (all sites)
+├── nuxt.config.ts             # PWA + prerender routes (active site)
 ├── package.json
 ├── package-lock.json
 ├── pages
-│   ├── index.vue              # all-sites listing
-│   └── s
-│       ├── [site]/index.vue   # one site's landing
-│       └── [site]/docs/[type]/[slug].vue   # per-doc page
+│   ├── index.vue              # active site landing, or the listing
+│   ├── docs/[type]/[slug].vue # a doc for the active site
+│   └── search.vue             # client-side full-text search
 ├── public                     # static assets (imgs, PWA icons)
-├── scripts/fetch-couchdb.mjs  # pull docs from CouchDB into a site
+├── scripts
+│   ├── fetch-couchdb.mjs      # pull docs from CouchDB into a site
+│   └── run.mjs                # `node run.mjs dev|generate [site]` -> sets the active site
 └── utils
     ├── renderers.ts           # per-site renderer registry (resolveRenderer)
-    └── sites.ts               # import.meta.glob loader (sites, getSite, getSiteDoc)
+    ├── search.ts              # build-time index + searchDocs (site-scoped)
+    └── sites.ts               # import.meta.glob loader + useActiveSite/resolveSitePath
 ```
 
 ## Stack

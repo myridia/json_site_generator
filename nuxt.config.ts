@@ -8,6 +8,12 @@ export default defineNuxtConfig({
 
   modules: ["@vite-pwa/nuxt", "@nuxtjs/tailwindcss"],
 
+  runtimeConfig: {
+    public: {
+      site: "",
+    },
+  },
+
   app: {
     head: {
       charset: "utf-8",
@@ -50,23 +56,17 @@ export default defineNuxtConfig({
 });
 
 function buildSiteRoutes() {
-  const src = fileURLToPath(new URL("./content/sites/", import.meta.url));
+  const site = process.env.NUXT_PUBLIC_SITE;
+  if (!site) return [];
+  const src = fileURLToPath(new URL(`./content/sites/${site}/docs/`, import.meta.url));
   if (!existsSync(src)) return [];
   const routes = [];
-  for (const site of readdirSync(src)) {
-    const siteDir = join(src, site);
-    if (!statSync(siteDir).isDirectory()) continue;
-    routes.push(`/s/${site}`);
-    const docsDir = join(siteDir, "docs");
-    if (!existsSync(docsDir)) continue;
-    for (const type of readdirSync(docsDir)) {
-      const typeDir = join(docsDir, type);
-      if (!statSync(typeDir).isDirectory()) continue;
-      for (const file of readdirSync(typeDir)) {
-        if (!file.endsWith(".json")) continue;
-        const slug = file.replace(/\.json$/, "");
-        routes.push(`/s/${site}/docs/${type}/${slug}`);
-      }
+  for (const type of readdirSync(src)) {
+    const typeDir = join(src, type);
+    if (!statSync(typeDir).isDirectory()) continue;
+    for (const file of readdirSync(typeDir)) {
+      if (!file.endsWith(".json")) continue;
+      routes.push(`/docs/${type}/${file.replace(/\.json$/, "")}`);
     }
   }
   return routes;

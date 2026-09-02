@@ -2,7 +2,7 @@
   <div class="min-h-screen flex flex-col">
     <header class="mx-auto w-full max-w-[960px] px-[20px]">
       <div class="my-[18px]">
-        <NuxtLink :to="currentSite ? `/s/${currentSite.name}` : '/'" class="flex items-center gap-2 font-body no-underline">
+        <NuxtLink to="/" class="flex items-center gap-2 font-body no-underline">
           <img v-if="currentSite?.config.logo" :src="currentSite.config.logo" alt="Logo" class="h-6 w-auto" />
           <span class="font-heading text-[1.6em] italic tracking-wide text-[#8a8a8a]">
             {{ currentSite?.config.title || "Home" }}
@@ -39,7 +39,7 @@
           <ul class="list-none">
             <li v-for="item in currentSite.config.nav" :key="item.label" class="my-[5px]">
               <NuxtLink
-                :to="item.url"
+                :to="resolveSitePath(currentSite.name, item.url)"
                 class="font-heading text-[1.4em] no-underline text-myridia-green hover:text-myridia-ink"
               >
                 {{ item.label }}
@@ -58,17 +58,12 @@
 </template>
 
 <script setup>
-import { getSite, getDefaultSite } from "~/utils/sites";
+import { useActiveSite, resolveSitePath } from "~/utils/sites";
 
-const route = useRoute();
 const router = useRouter();
 const headerQuery = ref("");
 
-const currentSite = computed(() => {
-  const name = route.params.site;
-  if (typeof name === "string" && name) return getSite(name);
-  return getDefaultSite();
-});
+const currentSite = useActiveSite();
 
 function onHeaderSearch() {
   const q = headerQuery.value.trim();

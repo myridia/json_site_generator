@@ -30,10 +30,11 @@ function tokenize(query: string): string[] {
     .filter(Boolean);
 }
 
-export function searchDocs(query: string, limit = 50) {
+export function searchDocs(query: string, opts: { site?: string } = {}, limit = 50) {
   const terms = tokenize(query);
   if (!terms.length) return [];
-  const scored = index
+  const pool = opts.site ? index.filter((d) => d.site === opts.site) : index;
+  const scored = pool
     .map((doc) => {
       const hits = terms.filter((t) => doc.text.includes(t)).length;
       return { doc, hits };

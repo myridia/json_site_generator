@@ -63,6 +63,24 @@ export function getDefaultSite() {
   return getSite(defaultSiteName);
 }
 
+export function useActiveSite() {
+  const route = useRoute();
+  const config = useRuntimeConfig();
+  return computed(() => {
+    const configured = (config.public as Record<string, string | undefined>)?.site || "";
+    const query = typeof route.query.site === "string" ? route.query.site : "";
+    const name = query || configured;
+    return name ? getSite(name) : null;
+  });
+}
+
+export function resolveSitePath(siteName: string, url?: string) {
+  if (!url) return "/";
+  if (url === `/s/${siteName}`) return "/";
+  const prefix = `/s/${siteName}/`;
+  return url.startsWith(prefix) ? url.slice(prefix.length - 1) : url;
+}
+
 export function getSiteDoc(site: string, type: string, slug: string) {
   return getSite(site)?.docs.find((d) => d.type === type && d.slug === slug)?.doc || null;
 }

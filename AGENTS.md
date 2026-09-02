@@ -52,50 +52,58 @@ registry entry in `utils/renderers.ts`. No engine code changes needed.
 ## Dev Setup
 ```bash
 npm install
-npm run dev      # dev server
-npm run generate # build static site into .output/public
+npm run dev                # all-sites listing at / (no site selected)
+npm run dev myridia        # live dev for ONE site, root URLs ("/", "/docs/...")
+npm run generate myridia   # build that site's static output into .output/public
 ```
+The site name is passed to `scripts/run.mjs`, which sets `NUXT_PUBLIC_SITE`
+(reads back via `runtimeConfig.public.site`). With no site arg, the app shows an
+all-sites listing at `/` and links carry `?site=<name>` so docs resolve to a site.
+
 Add docs as JSON in `content/sites/<site>/docs/<type>/<slug>.json`, then rebuild.
 
 ## Project Structure
 - `app.vue` — root app (NuxtLayout + NuxtPage)
 - `layouts/default.vue` — shared site shell (header nav, footer); resolves the
-  current site from the route (`/s/<site>/...` -> `content/sites/<site>/site.json`)
-- `pages/index.vue` — lists all sites + their docs
-- `pages/s/[site]/index.vue` — one site's landing (hero/manifesto from `site.json home`
-  + "Recent from the Notebook" posts)
-- `pages/s/[site]/docs/[type]/[slug].vue` — per-doc page
+  active site via `useActiveSite()` (`?site=` query, else `NUXT_PUBLIC_SITE`, else none)
+- `pages/index.vue` — active site's landing, or the all-sites listing when none
+- `pages/docs/[type]/[slug].vue` — a doc for the active site
 - `pages/search.vue` — client-side full-text search results (`?q=`)
+- `components/AllSites.vue` — all-sites listing (`/` when no site selected)
 - `components/DocRenderer.vue` — per-site type registry dispatcher
 - `components/Thread.vue`/`ThreadReply.vue` — thread renderer (tibellus thread schema)
 - `components/Post.vue` — Notebook post renderer (content string or body[])
 - `components/FallbackDoc.vue` — generic fallback for unknown types
-- `utils/sites.ts` — `import.meta.glob` loader of `content/sites/*`: `sites`,
+- `utils/sites.ts` — `import.meta.glob` loader of `content/sites/*`, `useActiveSite`,
+  `resolveSitePath` (strips a leading `/s/<site>` from legacy `site.json` URLs),
   `getSite(name)`, `getSiteDoc(site, type, slug)`
 - `utils/renderers.ts` — per-site renderer registry: site name -> `{type: Component}`,
   `resolveRenderer(site, type)`, `registerSiteRenderers(site, registry)`
-- `utils/search.ts` — build-time index of all docs + `searchDocs(query)`
+- `utils/search.ts` — build-time index of all docs + `searchDocs(query, { site })`
 - `content/sites/` — one folder per site (site.json + docs/)
+- `scripts/run.mjs` — `node scripts/run.mjs dev|generate [site]`; sets `NUXT_PUBLIC_SITE`
 - `scripts/fetch-couchdb.mjs` — optional build-time CouchDB pull
-- `nuxt.config.ts` — PWA module, Tailwind module, prerender routes (scans all sites)
+- `nuxt.config.ts` — PWA module, Tailwind module, prerender routes (active site only)
 
 ## URLs
-- `/` — all sites listing
-- `/s/<site>` — a site's landing page
-- `/s/<site>/docs/<type>/<slug>` — one doc
+- Run with a site (`npm run dev <site>` / `generate <site>`):
+  - `/` — that site's landing page
+  - `/docs/<type>/<slug>` — one doc
+- Run without a site: `/` — all-sites listing (`?site=` links pick a site per request)
 
 ## Key Architecture
 - **Shared shell**: Nuxt layout holds header/menu/footer + PWA; docs carry
   only their own content (threads etc. do NOT repeat the site layout). The
-  shell reads the active site from `route.params.site`.
-- **Per-site renderers**: `pages/s/[site]/docs/[type]/[slug].vue` dispatches on
+  shell reads the active site from `useActiveSite()`.
+- **Per-site renderers**: `pages/docs/[type]/[slug].vue` dispatches on
   `type` via `DocRenderer` to the right component registered for that site in
   `utils/renderers.ts`. Add a new doc type/site logic = add a registry entry
   (and a component). Unknown types fall back to `FallbackDoc`.
 - **Static data**: docs are bundled into the build via `import.meta.glob`
   (no runtime fetch), so each page is fully pre-rendered and crawler-friendly.
-- **Routes for prerender**: `nuxt.config.ts` scans `content/sites/*` to enumerate
-  the `/s/<site>` and `/s/<site>/docs/<type>/<slug>` routes for `nitro.prerender`.
+- **Routes for prerender**: `nuxt.config.ts` reads `NUXT_PUBLIC_SITE` to enumerate
+  the `/docs/<type>/<slug>` routes for `nitro.prerender`; without it only `/` is
+  pre-rendered (the listing).
 
 ## Conventions
 - No comments in code unless asked.

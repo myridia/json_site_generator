@@ -2,7 +2,7 @@
   <section>
     <ul v-if="home.hero && home.hero.length" class="m-0 mb-6 flex list-none flex-wrap gap-3 p-0">
       <li v-for="(tile, i) in home.hero" :key="tile.label || i" class="border-2 border-dotted border-[#a8a8a8] bg-white px-4 py-2">
-        <NuxtLink :to="tile.url" class="font-heading text-[1.3em] italic no-underline text-myridia-green hover:text-myridia-ink">
+        <NuxtLink :to="resolveSitePath(site.name, tile.url)" class="font-heading text-[1.3em] italic no-underline text-myridia-green hover:text-myridia-ink">
           {{ tile.label }}
         </NuxtLink>
       </li>
@@ -38,7 +38,7 @@
       <ul class="list-none">
         <li v-for="post in recentPosts" :key="post.slug" class="mb-4">
           <NuxtLink
-            :to="`/s/${site.name}/docs/post/${post.slug}`"
+            :to="`/docs/post/${post.slug}`"
             class="font-heading text-[1.3em] italic no-underline text-myridia-green hover:text-myridia-ink"
           >
             {{ post.title }}
@@ -52,6 +52,8 @@
 </template>
 
 <script setup>
+import { resolveSitePath } from "~/utils/sites";
+
 const props = defineProps({
   site: { type: Object, required: true },
 });

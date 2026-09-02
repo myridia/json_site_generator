@@ -1,71 +1,92 @@
 #!/bin/sh
+# json_site_generator — Task Runner
+# Usage: ./ask.sh [site]   (empty site = all-sites listing)
 
-printf "\n  json_site_generator — Task Runner\n\n"
-printf "  ┌─────┬──────────────────────────────────────────────┐\n"
-printf "  │  ID │ Description                                  │\n"
-printf "  ├─────┼──────────────────────────────────────────────┤\n"
-printf "  │  1  │ Run                                          │\n"
-printf "  │  2  │ Install — npm install                        │\n"
-printf "  │  3  │ Dev — npm run dev                            │\n"
-printf "  │  4  │ Build — npm run build                        │\n"
-printf "  │  5  │ Generate Static — npm run generate           │\n"
-printf "  │  6  │ Preview — npx serve .output/public           │\n"
-printf "  │  7  │ Generate + Preview (chown first)             │\n"
-printf "  │  0  │ Exit                                         │\n"
-printf "  └─────┴──────────────────────────────────────────────┘\n\n"
+cd "$(dirname "$0")" || exit 1
 
-until [ "$task" = "0" ]; do
+SITE="${1:-}"
+
+if [ -z "$SITE" ]; then
+  printf "\n  Site name (Enter for all-sites listing): "
+  read -r SITE
+fi
+
+printf "\n  json_site_generator — Task Runner\n"
+printf "  Active site: %s\n\n" "${SITE:-<none — all-sites listing>}"
+
+while :; do
+  printf "  ┌─────┬──────────────────────────────────────────────────┐\n"
+  printf "  │  ID │ Description                                      │\n"
+  printf "  ├─────┼──────────────────────────────────────────────────┤\n"
+  printf "  │  1  │ Install — npm install                            │\n"
+  printf "  │  2  │ Dev — live dev server (site / listing)           │\n"
+  printf "  │  3  │ Generate — static build for the active site      │\n"
+  printf "  │  4  │ Build — nuxt build (server bundle)               │\n"
+  printf "  │  5  │ Generate + Preview — build then serve             │\n"
+  printf "  │  6  │ Preview — serve .output/public (port 5000)       │\n"
+  printf "  │  7  │ Clean — remove .nuxt/.output/vite cache          │\n"
+  printf "  │  8  │ Fix ownership — sudo chown veto:veto .           │\n"
+  printf "  │  0  │ Exit                                              │\n"
+  printf "  └─────┴──────────────────────────────────────────────────┘\n\n"
+
   printf "  Enter Task ID: "
-  read task
+  read -r task || exit 0
 
-  if [ "$task" = "1" ]; then
-    printf "...Chowning project to veto:veto\n"
-    sudo chown veto:veto . -Rf
-    npm run generate
-    npx serve .output/public
+  case "$task" in
+    1)
+      printf "...npm install\n\n"
+      npm install
+      ;;
+    2)
+      printf "...npm run dev %s\n\n" "$SITE"
+      printf "  Open these in your browser:\n"
+      printf "    http://localhost:3000/                          # landing (or site listing)\n"
+      if [ -n "$SITE" ]; then
+        printf "    http://localhost:3000/docs/<type>/<slug>        # a doc\n"
+      fi
+      printf "    http://localhost:3000/search                      # search\n"
+      printf "  Tip: edit any .vue file or doc JSON and it hot-reloads live.\n"
+      printf "  Vue Devtools widget sits in the bottom corner (http://localhost:3000/_nuxt).\n\n"
+      npm run dev "$SITE"
+      ;;
+    3)
+      printf "...npm run generate %s\n\n" "$SITE"
+      npm run generate "$SITE"
+      ;;
+    4)
+      printf "...npm run build\n\n"
+      npm run build
+      ;;
+    5)
+      printf "...npm run generate %s\n\n" "$SITE"
+      npm run generate "$SITE"
+      printf "\n...serving .output/public on http://localhost:5000\n\n"
+      npx serve .output/public -l 5000
+      ;;
+    6)
+      printf "...npx serve .output/public -l 5000\n\n"
+      npx serve .output/public -l 5000
+      ;;
+    7)
+      printf "...removing .nuxt .output node_modules/.vite\n\n"
+      rm -rf .nuxt .output node_modules/.vite
+      printf "  Cleaned. Run task 2 (dev) or 3 (generate) again — this fixes stale-build\n"
+      printf "  errors like 'Failed to resolve import #app-manifest'.\n"
+      ;;
+    8)
+      printf "...sudo chown veto:veto . -Rf\n\n"
+      sudo chown veto:veto . -Rf
+      ;;
+    0)
+      printf "Goodbye!\n"
+      exit 0
+      ;;
+    *)
+      printf "  Unknown task: %s\n" "$task"
+      ;;
+  esac
 
-  elif [ "$task" = "2" ]; then
-    printf "...npm install\n"
-    npm install
-
-  elif [ "$task" = "3" ]; then
-    printf "...Starting live dev mode (HMR + Vue Devtools)\n"
-
-    printf "  Open these in your browser:\n"
-    printf "    http://localhost:3000/                                    # all sites\n"
-    printf "    http://localhost:3000/s/myridia                          # landing (hero + recent)\n"
-    printf "    http://localhost:3000/s/myridia/docs/post/<slug>         # a post\n"
-    printf "    http://localhost:3000/s/myridia/docs/thread/<slug>       # a thread\n"
-    printf "    http://localhost:3000/search                             # search\n"
-    printf "  Tip: edit any .vue file or doc JSON and it hot-reloads live.\n"
-    printf "  Vue Devtools widget sits in the bottom corner (http://localhost:3000/_nuxt).\n\n"
-    sudo chown veto:veto . -Rf
-    npm run dev myridia
-
-  elif [ "$task" = "4" ]; then
-    printf "...npm run build\n"
-    npm run build
-
-  elif [ "$task" = "5" ]; then
-    printf "...npm run generate\n"
-    npm run generate
-
-  elif [ "$task" = "6" ]; then
-    printf "...npx serve .output/public\n"
-    npx serve .output/public
-
-  elif [ "$task" = "7" ]; then
-    printf "...Chown, generate and preview\n"
-    sudo chown veto:veto . -Rf
-    npm run generate
-    npx serve .output/public
-
-  else
-    printf "Goodbye!\n"
-  fi
-
-  sleep 2
+  printf "\n  Press Enter to return to the menu..."
+  read -r _ || exit 0
   printf "\n"
-  ./ask.sh
-
 done

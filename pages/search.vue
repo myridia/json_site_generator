@@ -23,12 +23,12 @@
       <ul v-else class="mt-4 list-none">
         <li v-for="r in results" :key="`${r.site}-${r.type}-${r.slug}`" class="mb-3">
           <NuxtLink
-            :to="`/s/${r.site}/docs/${r.type}/${r.slug}`"
+            :to="docHref(r)"
             class="font-heading text-[1.2em] italic no-underline text-myridia-green hover:text-myridia-ink"
           >
             {{ r.title }}
           </NuxtLink>
-          <span class="ml-2 text-[0.8em] text-[#777]">/s/{{ r.site }}/docs/{{ r.type }}</span>
+          <span class="ml-2 text-[0.8em] text-[#777]">/docs/{{ r.type }}</span>
         </li>
       </ul>
     </template>
@@ -37,13 +37,25 @@
 
 <script setup>
 import { searchDocs } from "~/utils/search";
+import { useActiveSite } from "~/utils/sites";
 
 const route = useRoute();
 const router = useRouter();
 
+const activeSite = useActiveSite();
+
 const query = ref(route.query.q ? String(route.query.q) : "");
 
-const results = computed(() => (query.value ? searchDocs(query.value) : []));
+const results = computed(() =>
+  query.value
+    ? searchDocs(query.value, { site: activeSite.value?.name || undefined })
+    : []
+);
+
+function docHref(r) {
+  const base = `/docs/${r.type}/${r.slug}`;
+  return activeSite.value ? base : `${base}?site=${r.site}`;
+}
 
 function onSearch() {
   const q = query.value.trim();

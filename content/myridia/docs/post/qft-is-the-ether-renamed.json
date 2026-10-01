@@ -1,0 +1,31 @@
+{
+  "_id": "post:2026_08_24_qft_is_the_ether_renamed",
+  "_rev": "1-00000000000000000000000000000000",
+  "type": "post",
+  "template_version": 1,
+  "title": "Quantum Field Theory is the Ether renamed",
+  "created_at": "2026-08-24T11:00:00Z",
+  "tags": ["qft", "quantum", "ether", "physics"],
+  "summary": "Why the vacuum is not empty, particles are field excitations, and non-locality points back to a connected medium.",
+  "body": [
+    {
+      "heading": "The vacuum is not empty",
+      "paragraphs": [
+        "In general relativity, space is a geometric stage that can bend, but it is fundamentally empty. In quantum field theory the vacuum is a boiling, energetic sea, filled with zero-point energy and virtual particles. This is almost exactly what Tesla meant by a dense ether-like medium — modern physics calls it the quantum vacuum, but it functions as a physical medium with properties like permittivity and permeability."
+      ]
+    },
+    {
+      "heading": "Particles as excitations",
+      "paragraphs": [
+        "We don't treat particles as little billiard balls; they are localized excitations or ripples in a field. An electron is a vibration in the electron field — a mathematical version of Tesla's whirlpool in the ether. Excite the field and a particle appears; let the energy dissipate and it vanishes back into the field."
+      ]
+    },
+    {
+      "heading": "Non-locality",
+      "paragraphs": [
+        "Quantum entanglement is this phenomenon taken to its logical end: two particles, no matter how far apart, act as one. If the universe is filled with a single underlying medium, then distance is an illusion and the two are merely two points of the same fabric.",
+        "The name 'ether' was dropped largely for historical and political reasons. Michelson–Morley failed to detect a classical 'wind', and relativity was elegant without a gas-like medium. But when quantum mechanics brought the medium back, it used the language of 'fields' instead of 'ether'. Quantum field theory is the ether rebranded."
+      ]
+    }
+  ]
+}

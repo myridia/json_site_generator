@@ -1,0 +1,681 @@
+{
+  "title": "Myridia",
+  "tagline": "Free Software, Market, People, Land and Money",
+  "slogan": "When in doubt, use brute force.",
+  "logo": "/imgs/logo.png",
+  "nav": [
+    {
+      "label": "Home",
+      "url": "/"
+    },
+    {
+      "label": "Forum",
+      "url": "/docs/post/tesla-ether-and-monad"
+    },
+    {
+      "label": "Contact us",
+      "url": "/docs/page/contact"
+    }
+  ],
+  "footer": "Copyleft 2026",
+  "home": {
+    "columns": [
+      {
+        "heading": "Welcome to the real world",
+        "paragraphs": [
+          "Money is the only commodity nobody actually wants; it matters only when it moves. Hoarded money stops the one thing every community needs — circulation. Silvio Gesell saw this clearest: free money decays like the goods it buys, so it cannot be sat on, only spent. Money that must keep moving finances work instead of sleeping in vaults — that is the first freedom of all.",
+          "Land is not made by anyone, so no one may profit from merely holding it. Freiwirtschaft returns ground rent to society: free land means the earth stays a commons, and work is rewarded for what it builds, not for where it happens to stand."
+        ]
+      },
+      {
+        "heading": "",
+        "paragraphs": [
+          "Markets and people follow the same law. Markets are free when hoarding and cartels cannot tax the rest of us; people are free when their labor is not held hostage by idle capital. Software is pure thought — the freest thing that exists — and free software applies the Gesell principle to minds: ideas must circulate, or they rot in private vaults.",
+          "Society needs free software, markets, people, land and money because they form one circle. Money must circulate, land must be common, markets must stay open, people must be sovereign, and code must be shared. None survives alone; each unlocks the rest. That is why we reclaim the network for people — one page, one document, no hidden strings."
+        ]
+      }
+    ],
+    "repos": [
+      {
+        "name": ".emacs.d",
+        "url": "https://github.com/myridia/.emacs.d",
+        "logo": "https://github.com/myridia/.emacs.d/raw/main/.emacs.d.svg"
+      },
+      {
+        "name": "3dsolutions.hk",
+        "url": "https://github.com/myridia/3dsolutions.hk",
+        "logo": "https://github.com/myridia/3dsolutions.hk/raw/main/3dsolutions.hk.svg"
+      },
+      {
+        "name": "apache2-php56",
+        "url": "https://github.com/myridia/apache2-php56",
+        "logo": "https://github.com/myridia/apache2-php56/raw/main/apache2-php56.svg"
+      },
+      {
+        "name": "apache2-php72",
+        "url": "https://github.com/myridia/apache2-php72",
+        "logo": "https://github.com/myridia/apache2-php72/raw/main/apache2-php72.svg"
+      },
+      {
+        "name": "apache2-php74",
+        "url": "https://github.com/myridia/apache2-php74",
+        "logo": "https://github.com/myridia/apache2-php74/raw/main/apache2-php74.svg"
+      },
+      {
+        "name": "apache2-php8",
+        "url": "https://github.com/myridia/apache2-php8",
+        "logo": "https://github.com/myridia/apache2-php8/raw/main/apache2-php8.svg"
+      },
+      {
+        "name": "APIC",
+        "url": "https://github.com/myridia/APIC",
+        "logo": "https://github.com/myridia/APIC/raw/main/APIC.svg"
+      },
+      {
+        "name": "arduino",
+        "url": "https://github.com/myridia/arduino",
+        "logo": "https://github.com/myridia/arduino/raw/main/arduino.svg"
+      },
+      {
+        "name": "autodiscover",
+        "url": "https://github.com/myridia/autodiscover",
+        "logo": "https://github.com/myridia/autodiscover/raw/main/autodiscover.svg"
+      },
+      {
+        "name": "Autotext",
+        "url": "https://github.com/myridia/Autotext",
+        "logo": "https://github.com/myridia/Autotext/raw/main/Autotext.svg"
+      },
+      {
+        "name": "bilder_captcha",
+        "url": "https://github.com/myridia/bilder_captcha",
+        "logo": "https://github.com/myridia/bilder_captcha/raw/main/bilder_captcha.svg"
+      },
+      {
+        "name": "books",
+        "url": "https://github.com/myridia/books",
+        "logo": "https://github.com/myridia/books/raw/main/books.svg"
+      },
+      {
+        "name": "bw-coupon",
+        "url": "https://github.com/myridia/bw-coupon",
+        "logo": "https://github.com/myridia/bw-coupon/raw/main/bw-coupon.svg"
+      },
+      {
+        "name": "CCVR",
+        "url": "https://github.com/myridia/CCVR",
+        "logo": "https://github.com/myridia/CCVR/raw/main/CCVR.svg"
+      },
+      {
+        "name": "cf7-mailto",
+        "url": "https://github.com/myridia/cf7-mailto",
+        "logo": "https://github.com/myridia/cf7-mailto/raw/main/cf7-mailto.svg"
+      },
+      {
+        "name": "couchdb-doc_purger",
+        "url": "https://github.com/myridia/couchdb-doc_purger",
+        "logo": "https://github.com/myridia/couchdb-doc_purger/raw/main/couchdb-doc_purger.svg"
+      },
+      {
+        "name": "couchdb-export",
+        "url": "https://github.com/myridia/couchdb-export",
+        "logo": "https://github.com/myridia/couchdb-export/raw/main/couchdb-export.svg"
+      },
+      {
+        "name": "couchdb-import",
+        "url": "https://github.com/myridia/couchdb-import",
+        "logo": "https://github.com/myridia/couchdb-import/raw/main/couchdb-import.svg"
+      },
+      {
+        "name": "couchdb-view-indexer",
+        "url": "https://github.com/myridia/couchdb-view-indexer",
+        "logo": "https://github.com/myridia/couchdb-view-indexer/raw/main/couchdb-view-indexer.svg"
+      },
+      {
+        "name": "couchy",
+        "url": "https://github.com/myridia/couchy",
+        "logo": "https://github.com/myridia/couchy/raw/main/couchy.svg"
+      },
+      {
+        "name": "crossword",
+        "url": "https://github.com/myridia/crossword",
+        "logo": "https://github.com/myridia/crossword/raw/main/crossword.svg"
+      },
+      {
+        "name": "cryptext",
+        "url": "https://github.com/myridia/cryptext",
+        "logo": "https://github.com/myridia/cryptext/raw/main/cryptext.svg"
+      },
+      {
+        "name": "CryptText",
+        "url": "https://github.com/myridia/CryptText",
+        "logo": "https://github.com/myridia/CryptText/raw/main/CryptText.svg"
+      },
+      {
+        "name": "ct",
+        "url": "https://github.com/myridia/ct",
+        "logo": "https://github.com/myridia/ct/raw/main/ct.svg"
+      },
+      {
+        "name": "django-file-captcha",
+        "url": "https://github.com/myridia/django-file-captcha",
+        "logo": "https://github.com/myridia/django-file-captcha/raw/main/django-file-captcha.svg"
+      },
+      {
+        "name": "django_auto_translator",
+        "url": "https://github.com/myridia/django_auto_translator",
+        "logo": "https://github.com/myridia/django_auto_translator/raw/main/django_auto_translator.svg"
+      },
+      {
+        "name": "docker-chromium",
+        "url": "https://github.com/myridia/docker-chromium",
+        "logo": "https://github.com/myridia/docker-chromium/raw/main/docker-chromium.svg"
+      },
+      {
+        "name": "docker-compose-nginx-php",
+        "url": "https://github.com/myridia/docker-compose-nginx-php",
+        "logo": "https://github.com/myridia/docker-compose-nginx-php/raw/main/docker-compose-nginx-php.svg"
+      },
+      {
+        "name": "docker_phoenix",
+        "url": "https://github.com/myridia/docker_phoenix",
+        "logo": "https://github.com/myridia/docker_phoenix/raw/main/docker_phoenix.svg"
+      },
+      {
+        "name": "docker_proxy",
+        "url": "https://github.com/myridia/docker_proxy",
+        "logo": "https://github.com/myridia/docker_proxy/raw/main/docker_proxy.svg"
+      },
+      {
+        "name": "docker_trixie",
+        "url": "https://github.com/myridia/docker_trixie",
+        "logo": "https://github.com/myridia/docker_trixie/raw/main/docker_trixie.svg"
+      },
+      {
+        "name": "domain-swapper",
+        "url": "https://github.com/myridia/domain-swapper",
+        "logo": "https://github.com/myridia/domain-swapper/raw/main/domain-swapper.svg"
+      },
+      {
+        "name": "domain-translate",
+        "url": "https://github.com/myridia/domain-translate",
+        "logo": "https://github.com/myridia/domain-translate/raw/main/domain-translate.svg"
+      },
+      {
+        "name": "e-commerce_theme",
+        "url": "https://github.com/myridia/e-commerce_theme",
+        "logo": "https://github.com/myridia/e-commerce_theme/raw/main/e-commerce_theme.svg"
+      },
+      {
+        "name": "email_gateway",
+        "url": "https://github.com/myridia/email_gateway",
+        "logo": "https://github.com/myridia/email_gateway/raw/main/email_gateway.svg"
+      },
+      {
+        "name": "fedora_cross_compile",
+        "url": "https://github.com/myridia/fedora_cross_compile",
+        "logo": "https://github.com/myridia/fedora_cross_compile/raw/main/fedora_cross_compile.svg"
+      },
+      {
+        "name": "File-Remover",
+        "url": "https://github.com/myridia/File-Remover",
+        "logo": "https://github.com/myridia/File-Remover/raw/main/File-Remover.svg"
+      },
+      {
+        "name": "fluxdb2",
+        "url": "https://github.com/myridia/fluxdb2",
+        "logo": "https://github.com/myridia/fluxdb2/raw/main/fluxdb2.svg"
+      },
+      {
+        "name": "froxlor_api",
+        "url": "https://github.com/myridia/froxlor_api",
+        "logo": "https://github.com/myridia/froxlor_api/raw/main/froxlor_api.svg"
+      },
+      {
+        "name": "FTL-Maker",
+        "url": "https://github.com/myridia/FTL-Maker",
+        "logo": "https://github.com/myridia/FTL-Maker/raw/main/FTL-Maker.svg"
+      },
+      {
+        "name": "GAUF",
+        "url": "https://github.com/myridia/GAUF",
+        "logo": "https://github.com/myridia/GAUF/raw/main/GAUF.svg"
+      },
+      {
+        "name": "get_excel",
+        "url": "https://github.com/myridia/get_excel",
+        "logo": "https://github.com/myridia/get_excel/raw/main/get_excel.svg"
+      },
+      {
+        "name": "gmap2gpx",
+        "url": "https://github.com/myridia/gmap2gpx",
+        "logo": "https://github.com/myridia/gmap2gpx/raw/main/gmap2gpx.svg"
+      },
+      {
+        "name": "google_auto_translate",
+        "url": "https://github.com/myridia/google_auto_translate",
+        "logo": "https://github.com/myridia/google_auto_translate/raw/main/google_auto_translate.svg"
+      },
+      {
+        "name": "handle_file_upload",
+        "url": "https://github.com/myridia/handle_file_upload",
+        "logo": "https://github.com/myridia/handle_file_upload/raw/main/handle_file_upload.svg"
+      },
+      {
+        "name": "Hello-Wine-AppImage",
+        "url": "https://github.com/myridia/Hello-Wine-AppImage",
+        "logo": "https://github.com/myridia/Hello-Wine-AppImage/raw/main/Hello-Wine-AppImage.svg"
+      },
+      {
+        "name": "hello_await_async",
+        "url": "https://github.com/myridia/hello_await_async",
+        "logo": "https://github.com/myridia/hello_await_async/raw/main/hello_await_async.svg"
+      },
+      {
+        "name": "hello_bitcoin",
+        "url": "https://github.com/myridia/hello_bitcoin",
+        "logo": "https://github.com/myridia/hello_bitcoin/raw/main/hello_bitcoin.svg"
+      },
+      {
+        "name": "hello_c",
+        "url": "https://github.com/myridia/hello_c",
+        "logo": "https://github.com/myridia/hello_c/raw/main/hello_c.svg"
+      },
+      {
+        "name": "hello_c_gtk",
+        "url": "https://github.com/myridia/hello_c_gtk",
+        "logo": "https://github.com/myridia/hello_c_gtk/raw/main/hello_c_gtk.svg"
+      },
+      {
+        "name": "hello_c_nappgui",
+        "url": "https://github.com/myridia/hello_c_nappgui",
+        "logo": "https://github.com/myridia/hello_c_nappgui/raw/main/hello_c_nappgui.svg"
+      },
+      {
+        "name": "hello_cmake_c",
+        "url": "https://github.com/myridia/hello_cmake_c",
+        "logo": "https://github.com/myridia/hello_cmake_c/raw/main/hello_cmake_c.svg"
+      },
+      {
+        "name": "hello_haproxy_docker",
+        "url": "https://github.com/myridia/hello_haproxy_docker",
+        "logo": "https://github.com/myridia/hello_haproxy_docker/raw/main/hello_haproxy_docker.svg"
+      },
+      {
+        "name": "Hello_LLM",
+        "url": "https://github.com/myridia/Hello_LLM",
+        "logo": "https://github.com/myridia/Hello_LLM/raw/main/Hello_LLM.svg"
+      },
+      {
+        "name": "hello_llm_translate",
+        "url": "https://github.com/myridia/hello_llm_translate",
+        "logo": "https://github.com/myridia/hello_llm_translate/raw/main/hello_llm_translate.svg"
+      },
+      {
+        "name": "hello_phoenix",
+        "url": "https://github.com/myridia/hello_phoenix",
+        "logo": "https://github.com/myridia/hello_phoenix/raw/main/hello_phoenix.svg"
+      },
+      {
+        "name": "hello_PortableApp",
+        "url": "https://github.com/myridia/hello_PortableApp",
+        "logo": "https://github.com/myridia/hello_PortableApp/raw/main/hello_PortableApp.svg"
+      },
+      {
+        "name": "hello_rust",
+        "url": "https://github.com/myridia/hello_rust",
+        "logo": "https://github.com/myridia/hello_rust/raw/main/hello_rust.svg"
+      },
+      {
+        "name": "hello_rust_egui",
+        "url": "https://github.com/myridia/hello_rust_egui",
+        "logo": "https://github.com/myridia/hello_rust_egui/raw/main/hello_rust_egui.svg"
+      },
+      {
+        "name": "hello_rust_gtk4",
+        "url": "https://github.com/myridia/hello_rust_gtk4",
+        "logo": "https://github.com/myridia/hello_rust_gtk4/raw/main/hello_rust_gtk4.svg"
+      },
+      {
+        "name": "hello_rust_iced",
+        "url": "https://github.com/myridia/hello_rust_iced",
+        "logo": "https://github.com/myridia/hello_rust_iced/raw/main/hello_rust_iced.svg"
+      },
+      {
+        "name": "hello_sodium",
+        "url": "https://github.com/myridia/hello_sodium",
+        "logo": "https://github.com/myridia/hello_sodium/raw/main/hello_sodium.svg"
+      },
+      {
+        "name": "hello_tcp_chat",
+        "url": "https://github.com/myridia/hello_tcp_chat",
+        "logo": "https://github.com/myridia/hello_tcp_chat/raw/main/hello_tcp_chat.svg"
+      },
+      {
+        "name": "hello_wine32_appimage",
+        "url": "https://github.com/myridia/hello_wine32_appimage",
+        "logo": "https://github.com/myridia/hello_wine32_appimage/raw/main/hello_wine32_appimage.svg"
+      },
+      {
+        "name": "hello_woocommerce",
+        "url": "https://github.com/myridia/hello_woocommerce",
+        "logo": "https://github.com/myridia/hello_woocommerce/raw/main/hello_woocommerce.svg"
+      },
+      {
+        "name": "hello_zig",
+        "url": "https://github.com/myridia/hello_zig",
+        "logo": "https://github.com/myridia/hello_zig/raw/main/hello_zig.svg"
+      },
+      {
+        "name": "image",
+        "url": "https://github.com/myridia/image",
+        "logo": "https://github.com/myridia/image/raw/main/image.svg"
+      },
+      {
+        "name": "imapsync",
+        "url": "https://github.com/myridia/imapsync",
+        "logo": "https://github.com/myridia/imapsync/raw/main/imapsync.svg"
+      },
+      {
+        "name": "ip",
+        "url": "https://github.com/myridia/ip",
+        "logo": "https://github.com/myridia/ip/raw/main/ip.svg"
+      },
+      {
+        "name": "jqgrid_utils",
+        "url": "https://github.com/myridia/jqgrid_utils",
+        "logo": "https://github.com/myridia/jqgrid_utils/raw/main/jqgrid_utils.svg"
+      },
+      {
+        "name": "jqgriddownload",
+        "url": "https://github.com/myridia/jqgriddownload",
+        "logo": "https://github.com/myridia/jqgriddownload/raw/main/jqgriddownload.svg"
+      },
+      {
+        "name": "jquery_hide_show_password",
+        "url": "https://github.com/myridia/jquery_hide_show_password",
+        "logo": "https://github.com/myridia/jquery_hide_show_password/raw/main/jquery_hide_show_password.svg"
+      },
+      {
+        "name": "js_composer",
+        "url": "https://github.com/myridia/js_composer",
+        "logo": "https://github.com/myridia/js_composer/raw/main/js_composer.svg"
+      },
+      {
+        "name": "json_site_generator",
+        "url": "https://github.com/myridia/json_site_generator",
+        "logo": "https://github.com/myridia/json_site_generator/raw/main/json_site_generator.svg"
+      },
+      {
+        "name": "kosmos",
+        "url": "https://github.com/myridia/kosmos",
+        "logo": "https://github.com/myridia/kosmos/raw/main/kosmos.svg"
+      },
+      {
+        "name": "lanzarote-vulkane.com",
+        "url": "https://github.com/myridia/lanzarote-vulkane.com",
+        "logo": "https://github.com/myridia/lanzarote-vulkane.com/raw/main/lanzarote-vulkane.com.svg"
+      },
+      {
+        "name": "lanzarote-vulkane.de",
+        "url": "https://github.com/myridia/lanzarote-vulkane.de",
+        "logo": "https://github.com/myridia/lanzarote-vulkane.de/raw/main/lanzarote-vulkane.de.svg"
+      },
+      {
+        "name": "Launcher",
+        "url": "https://github.com/myridia/Launcher",
+        "logo": "https://github.com/myridia/Launcher/raw/main/Launcher.svg"
+      },
+      {
+        "name": "libre-jqgrid",
+        "url": "https://github.com/myridia/libre-jqgrid",
+        "logo": "https://github.com/myridia/libre-jqgrid/raw/main/libre-jqgrid.svg"
+      },
+      {
+        "name": "log2textarea",
+        "url": "https://github.com/myridia/log2textarea",
+        "logo": "https://github.com/myridia/log2textarea/raw/main/log2textarea.svg"
+      },
+      {
+        "name": "lookup",
+        "url": "https://github.com/myridia/lookup",
+        "logo": "https://github.com/myridia/lookup/raw/main/lookup.svg"
+      },
+      {
+        "name": "media",
+        "url": "https://github.com/myridia/media",
+        "logo": "https://github.com/myridia/media/raw/main/media.svg"
+      },
+      {
+        "name": "mtranslate",
+        "url": "https://github.com/myridia/mtranslate",
+        "logo": "https://github.com/myridia/mtranslate/raw/main/mtranslate.svg"
+      },
+      {
+        "name": "my-browser-fingerprint",
+        "url": "https://github.com/myridia/my-browser-fingerprint",
+        "logo": "https://github.com/myridia/my-browser-fingerprint/raw/main/my-browser-fingerprint.svg"
+      },
+      {
+        "name": "myridia",
+        "url": "https://github.com/myridia/myridia",
+        "logo": "https://github.com/myridia/myridia/raw/main/myridia.svg"
+      },
+      {
+        "name": "mysqldump",
+        "url": "https://github.com/myridia/mysqldump",
+        "logo": "https://github.com/myridia/mysqldump/raw/main/logo.svg"
+      },
+      {
+        "name": "nginx_autoindex",
+        "url": "https://github.com/myridia/nginx_autoindex",
+        "logo": "https://github.com/myridia/nginx_autoindex/raw/main/nginx_autoindex.svg"
+      },
+      {
+        "name": "odoo_info",
+        "url": "https://github.com/myridia/odoo_info",
+        "logo": "https://github.com/myridia/odoo_info/raw/main/odoo_info.svg"
+      },
+      {
+        "name": "opencode_docker",
+        "url": "https://github.com/myridia/opencode_docker",
+        "logo": "https://github.com/myridia/opencode_docker/raw/main/opencode_docker.svg"
+      },
+      {
+        "name": "php8.2fpm",
+        "url": "https://github.com/myridia/php8.2fpm",
+        "logo": "https://github.com/myridia/php8.2fpm/raw/main/php8.2fpm.svg"
+      },
+      {
+        "name": "php8.4fpm",
+        "url": "https://github.com/myridia/php8.4fpm",
+        "logo": "https://github.com/myridia/php8.4fpm/raw/main/php8.4fpm.svg"
+      },
+      {
+        "name": "php_download_local_files",
+        "url": "https://github.com/myridia/php_download_local_files",
+        "logo": "https://github.com/myridia/php_download_local_files/raw/main/php_download_local_files.svg"
+      },
+      {
+        "name": "phpchecker",
+        "url": "https://github.com/myridia/phpchecker",
+        "logo": "https://github.com/myridia/phpchecker/raw/main/phpchecker.svg"
+      },
+      {
+        "name": "pico",
+        "url": "https://github.com/myridia/pico",
+        "logo": "https://github.com/myridia/pico/raw/main/pico.svg"
+      },
+      {
+        "name": "po_translator",
+        "url": "https://github.com/myridia/po_translator",
+        "logo": "https://github.com/myridia/po_translator/raw/main/po_translator.svg"
+      },
+      {
+        "name": "productmap",
+        "url": "https://github.com/myridia/productmap",
+        "logo": "https://github.com/myridia/productmap/raw/main/productmap.svg"
+      },
+      {
+        "name": "purple-gowhatsapp",
+        "url": "https://github.com/myridia/purple-gowhatsapp",
+        "logo": "https://github.com/myridia/purple-gowhatsapp/raw/main/purple-gowhatsapp.svg"
+      },
+      {
+        "name": "pwa",
+        "url": "https://github.com/myridia/pwa",
+        "logo": "https://github.com/myridia/pwa/raw/main/pwa.svg"
+      },
+      {
+        "name": "rate",
+        "url": "https://github.com/myridia/rate",
+        "logo": "https://github.com/myridia/rate/raw/main/rate.svg"
+      },
+      {
+        "name": "revslider",
+        "url": "https://github.com/myridia/revslider",
+        "logo": "https://github.com/myridia/revslider/raw/main/revslider.svg"
+      },
+      {
+        "name": "runner",
+        "url": "https://github.com/myridia/runner",
+        "logo": "https://github.com/myridia/runner/raw/main/runner.svg"
+      },
+      {
+        "name": "rust_email_cgi",
+        "url": "https://github.com/myridia/rust_email_cgi",
+        "logo": "https://github.com/myridia/rust_email_cgi/raw/main/rust_email_cgi.svg"
+      },
+      {
+        "name": "scrap",
+        "url": "https://github.com/myridia/scrap",
+        "logo": "https://github.com/myridia/scrap/raw/main/scrap.svg"
+      },
+      {
+        "name": "serversite",
+        "url": "https://github.com/myridia/serversite",
+        "logo": "https://github.com/myridia/serversite/raw/main/serversite.svg"
+      },
+      {
+        "name": "sodium-serial-keys",
+        "url": "https://github.com/myridia/sodium-serial-keys",
+        "logo": "https://github.com/myridia/sodium-serial-keys/raw/main/sodium-serial-keys.svg"
+      },
+      {
+        "name": "spoken_dict_th",
+        "url": "https://github.com/myridia/spoken_dict_th",
+        "logo": "https://github.com/myridia/spoken_dict_th/raw/main/spoken_dict_th.svg"
+      },
+      {
+        "name": "starter_bazel",
+        "url": "https://github.com/myridia/starter_bazel",
+        "logo": "https://github.com/myridia/starter_bazel/raw/main/starter_bazel.svg"
+      },
+      {
+        "name": "starter_grid",
+        "url": "https://github.com/myridia/starter_grid",
+        "logo": "https://github.com/myridia/starter_grid/raw/main/starter_grid.svg"
+      },
+      {
+        "name": "starter_static_contact_form",
+        "url": "https://github.com/myridia/starter_static_contact_form",
+        "logo": "https://github.com/myridia/starter_static_contact_form/raw/main/starter_static_contact_form.svg"
+      },
+      {
+        "name": "textmaker",
+        "url": "https://github.com/myridia/textmaker",
+        "logo": "https://github.com/myridia/textmaker/raw/main/textmaker.svg"
+      },
+      {
+        "name": "thai_tokenizer",
+        "url": "https://github.com/myridia/thai_tokenizer",
+        "logo": "https://github.com/myridia/thai_tokenizer/raw/main/thai_tokenizer.svg"
+      },
+      {
+        "name": "thaifont",
+        "url": "https://github.com/myridia/thaifont",
+        "logo": "https://github.com/myridia/thaifont/raw/main/thaifont.svg"
+      },
+      {
+        "name": "update_all_forks",
+        "url": "https://github.com/myridia/update_all_forks",
+        "logo": "https://github.com/myridia/update_all_forks/raw/main/update_all_forks.svg"
+      },
+      {
+        "name": "vanilla-spinner",
+        "url": "https://github.com/myridia/vanilla-spinner",
+        "logo": "https://github.com/myridia/vanilla-spinner/raw/main/vanilla-spinner.svg"
+      },
+      {
+        "name": "vanilla-website-utils",
+        "url": "https://github.com/myridia/vanilla-website-utils",
+        "logo": "https://github.com/myridia/vanilla-website-utils/raw/main/vanilla-website-utils.svg"
+      },
+      {
+        "name": "vuejs",
+        "url": "https://github.com/myridia/vuejs",
+        "logo": "https://github.com/myridia/vuejs/raw/main/vuejs.svg"
+      },
+      {
+        "name": "vulkane-lanzarote.com",
+        "url": "https://github.com/myridia/vulkane-lanzarote.com",
+        "logo": "https://github.com/myridia/vulkane-lanzarote.com/raw/main/vulkane-lanzarote.com.svg"
+      },
+      {
+        "name": "vulkane-lanzarote.de",
+        "url": "https://github.com/myridia/vulkane-lanzarote.de",
+        "logo": "https://github.com/myridia/vulkane-lanzarote.de/raw/main/vulkane-lanzarote.de.svg"
+      },
+      {
+        "name": "webpagelogger",
+        "url": "https://github.com/myridia/webpagelogger",
+        "logo": "https://github.com/myridia/webpagelogger/raw/main/webpagelogger.svg"
+      },
+      {
+        "name": "webspider",
+        "url": "https://github.com/myridia/webspider",
+        "logo": "https://github.com/myridia/webspider/raw/main/webspider.svg"
+      },
+      {
+        "name": "willdo",
+        "url": "https://github.com/myridia/willdo",
+        "logo": "https://github.com/myridia/willdo/raw/main/willdo.svg"
+      },
+      {
+        "name": "wine_browser_app_docker",
+        "url": "https://github.com/myridia/wine_browser_app_docker",
+        "logo": "https://github.com/myridia/wine_browser_app_docker/raw/main/wine_browser_app_docker.svg"
+      },
+      {
+        "name": "woocommerce-img-flipper",
+        "url": "https://github.com/myridia/woocommerce-img-flipper",
+        "logo": "https://github.com/myridia/woocommerce-img-flipper/raw/main/woocommerce-img-flipper.svg"
+      },
+      {
+        "name": "wordpress_cli",
+        "url": "https://github.com/myridia/wordpress_cli",
+        "logo": "https://github.com/myridia/wordpress_cli/raw/main/wordpress_cli.svg"
+      },
+      {
+        "name": "wp-mtranslate",
+        "url": "https://github.com/myridia/wp-mtranslate",
+        "logo": "https://github.com/myridia/wp-mtranslate/raw/main/wp-mtranslate.svg"
+      },
+      {
+        "name": "wp_block_theme",
+        "url": "https://github.com/myridia/wp_block_theme",
+        "logo": "https://github.com/myridia/wp_block_theme/raw/main/wp_block_theme.svg"
+      },
+      {
+        "name": "wp_contact7_honeypot",
+        "url": "https://github.com/myridia/wp_contact7_honeypot",
+        "logo": "https://github.com/myridia/wp_contact7_honeypot/raw/main/wp_contact7_honeypot.svg"
+      },
+      {
+        "name": "www.myridia.com",
+        "url": "https://github.com/myridia/www.myridia.com",
+        "logo": "https://github.com/myridia/www.myridia.com/raw/main/www.myridia.com.svg"
+      }
+    ]
+  }
+}

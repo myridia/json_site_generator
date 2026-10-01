@@ -1,0 +1,14 @@
+{
+  "_id": "page:contact",
+  "type": "page",
+  "title": "Contact us",
+  "body": [
+    {
+      "heading": "Contact",
+      "paragraphs": [
+        "Write to hello@myridia.com, or open an issue and pull request on the myridia organisation at github.com/myridia.",
+        "Ideas, disagreements and patches are all welcome. The best questions come as concrete code or concrete numbers."
+      ]
+    }
+  ]
+}

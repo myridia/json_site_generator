@@ -1,0 +1,21 @@
+{
+  "_id": "page:about",
+  "type": "page",
+  "title": "About us",
+  "body": [
+    {
+      "heading": "What this is",
+      "paragraphs": [
+        "Myridia is a notebook, an idea-farm and a collection of small free-software experiments. Everything here is a plain document in a plain repository: no database, no build magic, no hidden strings.",
+        "The site is generated from the same JSON files you can read in the source tree. What you see is what is stored — one page, one document, one commit."
+      ]
+    },
+    {
+      "heading": "How it works",
+      "paragraphs": [
+        "Each document lives under content/myridia/docs/. Threads collect replies around a single idea, posts are longer pieces, pages are the standing text of the site — like this one.",
+        "The whole bag of content can be mirrored, forked and carried anywhere. It is built on free software, from the generator down."
+      ]
+    }
+  ]
+}

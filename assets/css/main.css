@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    margin: auto;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 14px;
+    color: #333;
+    background-color: #eee;
+    @apply antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: times, "Times New Roman", serif;
+    font-style: italic;
+    color: #333;
+  }
+
+  a {
+    color: #88bb00;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #333;
+  }
+}
